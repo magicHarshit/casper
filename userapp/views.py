@@ -15,6 +15,7 @@ from InstituteInfo.models import *
 from InstituteInfo.views import extract_logo_path
 from django.views.generic.base import RedirectView
 from django.contrib.auth.forms import SetPasswordForm
+from facultyinfo.models import FacultyInfo
 
 
 
@@ -64,9 +65,10 @@ class EndUserLogin( TemplateView ):
                     return HttpResponseRedirect(reverse('profile', args = (self.request.user.id,self.request.user.username)))
 
             elif 'Faculty' in self.request.user.groups.values_list('name',flat = True) :
-#                try:
-#                    return HttpResponse('Testing Process..')
-#                except:
+               try:
+                   FacultyInfo.objects.get(user = request.user).profile
+                   return HttpResponseRedirect(reverse('faculty_detail', args = (self.request.user.id,self.request.user.username)))
+               except:
                 return HttpResponseRedirect(reverse('profile', args = (self.request.user.id,self.request.user.username)))
 
         else:

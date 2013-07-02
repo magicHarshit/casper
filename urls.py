@@ -44,7 +44,9 @@ urlpatterns = patterns('',
 
      url( r'^student/', include( 'studentinfo.urls' ) ),
 
-    url( r'^(?P<user_id>[-\d]+)/(?P<username>[-\w]+)/$', FacultyDetail.as_view(), name = 'faculty_detail' ),
+     url( r'^faculty/', include( 'facultyinfo.urls' ) ),
+
+    # url( r'^(?P<user_id>[-\d]+)/(?P<username>[-\w]+)/$', FacultyDetail.as_view(), name = 'faculty_detail' ),
 
      #url( r'^online-exam/', include( 'questionnaire.urls' ) ),
 

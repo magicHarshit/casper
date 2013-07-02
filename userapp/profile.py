@@ -23,7 +23,7 @@ class ProfileSubmission(TemplateView):
 
     #TODO code repetion for getting instance in get and post remove it and fine solution '''
     def get_context_data( self, **kwargs ):
-
+        institute_instance=None
         if 'Institute' in self.request.user.groups.values_list('name',flat = True):
 
             try:
@@ -48,8 +48,10 @@ class ProfileSubmission(TemplateView):
             except:
                 faculty_instance = None
             form = FacultyInfoForm( instance = faculty_instance )
-
-        image_path = extract_logo_path(institute_instance)
+        #todo image only for institute,make it for all three
+        # import pdb;pdb.set_trace()
+        if institute_instance:
+            image_path = extract_logo_path(institute_instance)
         return locals()
 
     def post(self, *args, **kwargs):
@@ -87,4 +89,5 @@ class ProfileSubmission(TemplateView):
         elif 'Student' in self.request.user.groups.values_list('name',flat = True):
             return HttpResponseRedirect(reverse('student_inbox'))
         elif 'Faculty' in self.request.user.groups.values_list('name',flat = True):
+            # return HttpResponseRedirect(reverse('student_inbox'))
             return HttpResponse('Testing....')#todo

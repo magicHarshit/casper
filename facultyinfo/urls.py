@@ -7,5 +7,5 @@ from facultyinfo.views import FacultyDetail
 
 urlpatterns = patterns( '',
 
-    url( r'^(?P<user_id>[-\d]+)/(?P<username>[-\w]+)$', FacultyDetail.as_view(), name = 'faculty_detail' ),
+    url( r'^(?P<user_id>[-\d]+)/(?P<username>[-\w]+)',FacultyDetail.as_view(), name = 'faculty_detail'),
     )
