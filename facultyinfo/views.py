@@ -20,14 +20,13 @@ class FacultyDetail( TemplateView):
         return locals()
 
     def post(self, *args, **kwargs):
-        # import pdb;pdb.set_trace()
         wall_post = WallPostForm(data = self.request.POST)
         if wall_post.is_valid():
             wall_post_obj = wall_post.save(commit= False)
             wall_post_obj.user = self.request.user
             wall_post_obj.save()
             all_wall_posts = WallPost.objects.filter(user = self.request.user).values_list('wall_post',flat=True)
-            return HttpResponseRedirect(".")
+            return HttpResponseRedirect(".")#todo new
         return render_to_response("facultyinfo/faculty.html",locals(),context_instance = RequestContext(self.request))
 
 

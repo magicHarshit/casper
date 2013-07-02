@@ -9,7 +9,7 @@
     <file path="/a.dummy" changelist="0de07f2e-3967-4ccd-bced-d7535d60ca03" time="1372786286900" ignored="false" />
     <file path="/models.py" changelist="0de07f2e-3967-4ccd-bced-d7535d60ca03" time="1372783483739" ignored="false" />
     <file path="/crop.py" changelist="0de07f2e-3967-4ccd-bced-d7535d60ca03" time="1372770155107" ignored="false" />
-    <file path="/views.py" changelist="0de07f2e-3967-4ccd-bced-d7535d60ca03" time="1372787004532" ignored="false" />
+    <file path="/views.py" changelist="0de07f2e-3967-4ccd-bced-d7535d60ca03" time="1372793056719" ignored="false" />
     <file path="/urls.py" changelist="0de07f2e-3967-4ccd-bced-d7535d60ca03" time="1372786383321" ignored="false" />
     <file path="/settings.py" changelist="0de07f2e-3967-4ccd-bced-d7535d60ca03" time="1372768593868" ignored="false" />
     <file path="/institute_profile.html" changelist="0de07f2e-3967-4ccd-bced-d7535d60ca03" time="1372771229779" ignored="false" />
@@ -39,17 +39,7 @@
     <favorites_list name="openshift" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="views.py" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/facultyinfo/views.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="31" column="0" selection-start="1518" selection-end="1518" vertical-scroll-proportion="0.6238698">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -126,20 +116,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="openshift" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="openshift" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="openshift" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="static" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -369,15 +345,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/InstituteInfo/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
-          <folding>
-            <element signature="e#25#53#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/group_config/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
@@ -492,7 +459,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/facultyinfo/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="0" selection-start="1518" selection-end="1518" vertical-scroll-proportion="0.6238698">
+        <state line="28" column="54" selection-start="1371" selection-end="1371" vertical-scroll-proportion="0.5424955">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/default/media/js/cropper.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
