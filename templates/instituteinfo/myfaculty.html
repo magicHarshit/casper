@@ -1,0 +1,40 @@
+{% extends "layouts/layout_base_2_columns.html" %}
+
+{% block A_1 %}
+
+    <div class="form-connection">
+        <table>
+            <tr>
+
+                <th>id</th>
+                <th>email</th>
+                <th>contact_number</th>
+                <th>address<th>
+                <th>qualification<th>
+                <th>work_experience</th>
+                <th>rating</th>
+            </tr>
+            {% for each in connected_faculty %}
+                <form enctype="multipart/form-data" method="post" action="{% url delete_faculty %}"> {% csrf_token %}
+                    <tr>
+                        <td>{{each.id}}</td>
+                        <td>{{each.email}}</td>
+                        <td>{{each.contact_number}}</td>
+                        <td>{{each.address}}</td>
+                        <td>{{each.qualification}}</td>
+                        <td>{{each.work_experience}}</td>
+                        <td>{{each.rating}}</td>
+
+                        <td>
+                            <input type="hidden" value = "{{ each.id }}" name="id">
+                        </td>
+
+                        <td>
+                            <input class="btn btn-primary" type="submit" value ="Delete"></button>
+                        </td>
+                </form>
+            {% endfor %}
+        </table>
+    </div>
+
+{% endblock A_1 %}

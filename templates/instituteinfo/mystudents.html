@@ -1,0 +1,130 @@
+{% extends "layouts/layout_base_2_columns.html" %}
+
+{% block A_1 %}
+
+<div class="form-connection">
+    <table>
+        <tr>
+            <th>Unique Numbr</th>
+            <th>Username</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Connected To</th>
+        </tr>
+        {% for each in connected_students %}
+                <form enctype="multipart/form-data" method="post" action="{% url delete_student %}"> {% csrf_token %}
+                <tr>
+                <td>{{each.unique_number}}</td>
+                <td> {{each.user__username }}</td>
+                <td> {{each.first_name}}</td>
+                <td> {{each.last_name}}</td>
+                <td>
+                    <select class="group">
+                        <option value="">None</option>
+                        {% for group in groups %}
+                            {% if group.id == each.insti_group__id %}
+                                <option value="{{ group.id }}" selected="True">{{ group.name }}</option>
+                            {% else %}
+                                <option value="{{ group.id }}" class="groupName" onclick="changeGroup('{{ group.id }}','{{ each.id }}')">
+                                    {{ group.name }}
+                                </option>
+                            {% endif %}
+                        {% endfor %}
+                    </select>
+                </td>
+
+                <td>
+                    <input type="hidden" value = "{{ each.id }}" name="id">
+                </td>
+                <td>
+                    <input class="btn btn-primary" type="submit" value ="Delete"></button>
+                </td>
+                </form>
+        {% endfor %}
+    </table>
+</div>
+
+
+
+<script type="text/javascript">
+    function changeGroup(group_id,student_id)
+    {
+
+        $.get('/institute/groups/'+group_id+'/'+student_id);
+    }
+</script>
+{#    $('.group').change(function(){#}
+{#       alert('ok.tested');#}
+{#    });#}
+
+{##}
+{#    #}
+{#<script type="text/template" id="user-list-template" >#}
+{#    <select id="group" name="group">#}
+{#        <option value="">select a group</option>#}
+{#        <% _.each(users,function(users){ %>#}
+{#        <option value="<%= users.get('fields') %>"><%= users.get('fields') %></option>#}
+{#        <% }); %>#}
+{#    </select>#}
+{#</script>#}
+{##}
+{##}
+{#    <script>#}
+{#        $.ajaxPrefilter( function( options, originalOptions, jqXHR ) {#}
+{#        options.url = 'http://127.0.0.1:8000' + options.url;#}
+{#        });#}
+{##}
+{#        var Users = Backbone.Collection.extend({#}
+{#            url:'/institute/groups/'#}
+{#        })#}
+{##}
+{#        var UserList = Backbone.View.extend({#}
+{#            el:'.group',#}
+{##}
+{#            events:{#}
+{#                "click .group":"doTest"#}
+{#            },#}
+{##}
+{#            initialize: function() {#}
+{#                this.clickHandler();#}
+{#            },#}
+{##}
+{#            clickHandler: function() {#}
+{##}
+{#                var self = this;#}
+{#                $('.group').click(function(e) {#}
+{#                        self.doTest();#}
+{#                });#}
+{#            },#}
+{##}
+{#            doTest: function() {#}
+{#                var that = this;#}
+{#                var users = new Users;#}
+{##}
+{#                users.fetch()#}
+{#                    success:function(users){#}
+{#                        alert('test');#}
+{#                        var template = _.template($('#user-list-template').html(),{users: users.models})#}
+{#                        that.$el.html(template)#}
+{#                    }#}
+{#                })#}
+{#            }#}
+{#        })#}
+{##}
+{#        var Router = Backbone.Router.extend({#}
+{#            routes:{#}
+{#                '':'mygroups'#}
+{#            }#}
+{#        })#}
+{##}
+{#        var userList = new UserList();#}
+{##}
+{#        var router = new Router();#}
+{#        router.on('route:mygroups',function(){#}
+{#            userList.render();#}
+{#        });#}
+{##}
+{#        Backbone.history.start();#}
+{##}
+{#    </script>#}
+{% endblock A_1 %}

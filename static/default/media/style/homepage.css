@@ -1,0 +1,168 @@
+body {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background-color: #f5f5f5;
+}
+.form-signin {
+    max-width: 300px;
+    padding: 19px 29px 29px;
+    margin: 0 auto 20px;
+    background-color: #fff;
+    border: 1px solid #e5e5e5;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+    -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+    box-shadow: 0 1px 2px rgba(0,0,0,.05);
+    float: right;
+    margin-top:354px;
+    margin-right: -289px;
+    width:227px;
+}
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+    margin-bottom: 10px;
+}
+.form-signin input[type="text"],
+.form-signin input[type="password"] {
+    font-size: 16px;
+    height: auto;
+    margin-bottom: 15px;
+    padding: 7px 9px;
+}
+.form-inline {
+    padding: 19px 29px 29px;
+    margin: 0 auto 20px;
+    background-color: #fff;
+    border: 1px solid #e5e5e5;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+    -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+    box-shadow: 0 1px 2px rgba(0,0,0,.50);
+    margin-top: 30px;
+    width:230px;
+    float: right;
+    margin-right: 175px;
+
+}
+.homePageContainer {
+    padding: 19px 29px 29px;
+    background-color: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius: 5px;
+    box-shadow: 0 1px 2px rgba(0,0,0,.05);
+    float:left;
+    margin-left: 175px;
+    margin-top: 30px;
+    height:354px;
+    width:600px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.footer-outer1 {
+    border-top: 1px solid #EEEEEE;
+    clear: both;
+    margin: 0 auto;
+    position: relative;
+}
+
+.registerInside {
+    padding-left: 9px;
+    padding-top: 2px;
+}
+
+.size128 {
+    border-radius: 6px 6px 6px 6px;
+    height: 128px;
+    width: 128px;
+}
+
+.logo{
+    position: absolute;
+    width: 200px;
+    margin: 34px 0px 0px 400px;
+    border: 1px solid #e5e5e5;
+}
+
+.form-frienRequest{
+    background-color: #fff;
+    border: 1px solid #e5e5e5;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+    -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+    box-shadow: 0 1px 2px rgba(0,0,0,.50);
+    height:60px
+}
+
+
+.form-wallPost {
+
+    margin: 0 auto 20px;
+    background-color: #fff;
+    border: 1px solid #e5e5e5;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+    -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+    box-shadow: 0 1px 2px rgba(0,0,0,.50);
+    margin-top: 30px;
+    width:230px;
+    float: right;
+    margin-right: 182px;
+
+}
+.form-connection {
+    background-color: #FFFFFF;
+    border: 1px solid #E5E5E5;
+    border-radius: 5px 5px 5px 5px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+
+    margin: 30px 369px 20px 275px;
+    padding-left: 8px;
+    width: 799px;
+}
+
+td {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border-bottom: 1px solid #EEEEEE;
+    padding: 8px 8px;
+    vertical-align: top;
+}
+.form-changepassword {
+    background-color: #FFFFFF;
+    border: 1px solid #E5E5E5;
+    border-radius: 5px 5px 5px 5px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+    float: right;
+    height: 175px;
+    margin: 30px 583px 20px auto;
+    padding-left: 15px;
+    padding-top: 10px;
+    width: 234px;
+}
+
+.form-group {
+    background-color: #FFFFFF;
+    border: 1px solid #E5E5E5;
+    border-radius: 5px 5px 5px 5px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+    height: 268px;
+    margin: 30px 516px 20px auto;
+    padding-left: 15px;
+    padding-top: 10px;
+    width: 257px;
+}
+
+.groupListButton {
+    margin-left: 278px;
+    margin-top: 10px;
+}
+.cover{
+    padding-left: 111px;
+}

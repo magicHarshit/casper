@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+
+    <script type="text/javascript">
+
+
+        function addElement() {
+
+            var ni = document.getElementById('myDiv');
+            var numi = document.getElementById('theValue');
+            var num = (document.getElementById('theValue').value -1)+ 2;
+            var num =  num.toString().concat('.0')
+            numi.value = num;
+            var newdiv = document.createElement('div');
+            var divIdName = 'my'+num+'Div';
+            newdiv.setAttribute('id',divIdName);
+            newdiv.innerHTML =
+                            '<label> '+num+' </label>' +
+                                '<input  type="text" name='+num+'>' +
+                        '<input type="hidden" value='+num+' id = '+num+'>'+
+                    '<p><a href="javascript:;" onclick="addChildElement('+num+');">Add Some  Child Elements</a></p>';
+            ni.appendChild(newdiv);
+        }
+
+        function removeElement(divNum) {
+            function removeDiv(divId) {
+                $("#"+divId).remove();
+            }
+            var ni = document.getElementById('myDiv');
+            var numi = document.getElementById('theValue');
+            var num = (document.getElementById('theValue').value -1);
+            numi.value = num;
+            var olddiv = document.getElementById(divNum);
+            ni.removeChild(olddiv);
+        }
+
+        function addChildElement(value){
+            value = value.toString()
+
+
+            if (value.split(".").length==1){value = value.toString().concat('.0')}
+
+            var ni = document.getElementById(value);
+            var value = document.getElementById(value).value;
+            var value = value.toString()
+            var last_index = (value.split(".").length)-1
+            var last_value = value.split(".")[last_index]
+            var increment_last_value = parseInt(last_value)+1
+
+            num = value.replace( new RegExp(last_value+"$"),increment_last_value)
+
+
+            ni.value = num;
+            new_ni = document.getElementById(ni.parentNode.id)
+
+            var newdiv = document.createElement('div');
+            var divIdName = 'my'+num+'Div';
+            newdiv.setAttribute('id',divIdName);
+            newdiv.innerHTML =
+                    '<label> '+num+' </label>' +
+                            '<input  type="text" name='+num+'>' ;
+                    '<input type="hidden" value='+num+' id = '+num+'>'+
+                    '<p><a href="javascript:;" onclick="addChildElement('+num+');">Add Some  Child Elements</a></p>';
+
+            new_ni.appendChild(newdiv)
+        }
+    </script>
+</head>
+<body>
+
+
+<input type="hidden" value="0" id="theValue" />
+<!--<input type="hidden" value="0" id="subValue" />-->
+<p><a href="javascript:;" onclick="addElement();">Add Some Elements</a></p>
+<p><a href="javascript:;" onclick="removeElement(my2Div);">Delete Elements</a></p>
+<div id="myDiv"> </div>
+</body>
+</html>

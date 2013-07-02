@@ -1,0 +1,33 @@
+{% extends "layouts/layout_base_2_columns.html" %}
+
+{% block A_1 %}
+<div class ="logo">
+{#    <img  src ="{{ STATIC_URL }}default/media/{{ image_path.photo }}">#}
+    <img  src ="{{ STATIC_URL }}default/media/{{ image_path.photo }}">
+    <strong><a href="{% url edit_image %}">Edit Image</a></strong>
+
+</div>
+
+{%  for wall_post in all_wall_posts  %}
+<div class="form-inline" style="width: 489px">
+    <div class="content">
+        {{ wall_post.wall_post }}<br>
+        {{wall_post.2}}
+    </div>
+</div>
+{%  endfor  %}
+
+{% endblock A_1 %}
+
+
+
+
+
+
+
+
+
+
+
+
+

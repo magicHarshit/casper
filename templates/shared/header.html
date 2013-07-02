@@ -1,0 +1,45 @@
+<div id="page">
+    <div id="header-outer">
+        <div id="header">
+                <a href="/" id="logo" title="Home" style="background: none">Casper</a>
+            {% if self.request.user.is_authenticated or request.user.is_authenticated %}
+                <ul id="title-nav" class="sf-js-enabled" style="float: right">
+                    <li class="expanded first">
+                        <a title=""> Welcome {{ request.user }}</a>
+                    </li>
+                    {% if group_type == 'Institute' %}
+                        <li class="expanded first">
+                            <a title="" href="{% url static_group_listing %}">MyGroups</a>
+                        </li>
+                        <li class="expanded first">
+                            <a title="" href="{% url connected_students %}">MyStudents</a>
+                        </li>
+                        <li class="expanded first">
+                            <a title="" href="{% url connected_faculty %}">MyFaculty</a>
+                        </li>
+                        <li class="expanded first">
+                            <a title="" href="{% url csv_upload %}">Register Students</a>
+                        </li>
+                        <li class="expanded first">
+                            <a title="" href="{% url csv_upload %}">Register Faculty</a>
+                        </li>
+                    {% endif %}
+                    <li class="expanded first">
+                        <a title="" href="{% url profile_submission %}">My Details</a>
+                    </li>
+                    <li >
+                    <div class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">My Account</a>
+                        <ul class="dropdown-menu menu" role="menu" aria-labelledby="dLabel">
+                            <li class="leaf"><a href="{% url changepassword %}" title="">Change Password</a></li>
+                            <li class="leaf"><a href="{% url logout %}" title="">Logout</a></li>
+                        </ul>
+                    </div>
+                    </li>
+                </ul>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+

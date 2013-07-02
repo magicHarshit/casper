@@ -1,0 +1,11 @@
+
+
+{% for each_student in student_users %}
+	<form  method="post" action="{% url student_verification %}"> {% csrf_token %}
+	    {{ each_student.username}}
+	    <input type = "hidden" value = "{{ each_student.id }}" name = "student_id">
+	    <input id="id_submit" name = 'status' type="submit"  value="Confirm" />
+	    <input id="id_submit" name = 'status' type="submit"  value="Reject" />
+	</form>
+{% endfor %}
+

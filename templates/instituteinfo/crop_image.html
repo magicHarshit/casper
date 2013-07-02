@@ -1,0 +1,56 @@
+{% extends "layouts/layout_base_2_columns.html" %}
+{% block A_1 %}
+
+{% block css %}
+<link rel="stylesheet" href="{{ STATIC_URL }}default/media/bootstrap/css/bootstrap.css" type="text/css" media="all" />
+<link type="text/css" rel="stylesheet" media="all" href="{{ STATIC_URL }}default/media/style/headerTwitter.css" />
+<link type="text/css" rel="stylesheet" media="all" href="{{ STATIC_URL }}default/media/style/homepage.css" />
+<link rel="stylesheet" href="{{ STATIC_URL }}default/media/style/jquery.Jcrop.css" type="text/css" media="all" />
+<link rel="stylesheet" href="{{ STATIC_URL }}default/media/style/thickbox.css" type="text/css" media="all" />
+<link rel="stylesheet" href="{{ STATIC_URL }}default/media/style/div_new.css" type="text/css" media="all" />
+{% endblock css %}
+
+
+{% block js %}
+<script src="{{ STATIC_URL }}default/media/js/jquery-1.7.2.min.js"></script>
+<script src="{{ STATIC_URL }}default/media/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}default/media/js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}default/media/js/thickbox.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}default/media/js/jquery.Jcrop.min.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}default/media/js/crop_image.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}default/media/js/utils_new.js"></script>
+{% endblock js %}
+
+
+
+
+<form enctype="multipart/form-data" method="post" class="form-horizontal"> {% csrf_token %}
+{% for each_field in form.visible_fields %}
+<div class="control-group">
+<label class="control-label" for="id_{{ each_field.label|lower }}">{{ each_field.label }}</label>
+<div class="controls">
+{%  if each_field.errors %}
+{{ each_field.errors }}
+{% endif %}
+{{each_field}}
+</div>
+</div>
+{% endfor %}
+
+<div id="div_cointainer_photo" style="display:none"></div>
+<div style="text-align:center;padding:20px;">
+<a href="#TB_inline?height=400&amp;width=700&amp;inlineId=div_cointainer_photo" class="thickbox" id='a_tag'></a>
+</div>
+<input type="hidden" value="{}" name="crop_dictionary" id="id_cropdict">
+
+<input class="btn btn-primary" type="submit" value ="Add Image"></button>
+</form>
+
+{% endblock A_1 %}
+
+
+
+
+
+
+

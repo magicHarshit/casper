@@ -1,0 +1,41 @@
+{% extends "admin/base_site.html" %}
+{% load i18n %}
+{% block extrastyle %}{{ block.super }}<link rel="stylesheet" type="text/css" href="{% load adminmedia %}{% admin_media_prefix %}css/dashboard.css" />{% endblock %}
+{% block coltype %}colMS{% endblock %}
+{% block bodyclass %}dashboard{% endblock %}
+
+{% block breadcrumbs %}
+<div class = breadcrumbs>
+    <a href='#' title="Home">Home</a>
+</div>
+{% endblock %}
+
+
+{% block content %}
+<h1>Admin Online-Exam</h1>
+<div id="content-main">
+
+
+    <div class="module">
+        <table>
+            <caption><a href="#" class="section" title="Online Exam">Online-Exam</a></caption>
+            <tr><th scope="row"><a href="{% url add_exam %}" title="My Paper">{% blocktrans %}My Paper{% endblocktrans %}</a></th></tr>
+
+
+            <tr><th scope="row"><a href="{% url add_question_set %}" title="My Paper Set">{% blocktrans %}My Paper Set{% endblocktrans %}</a></th></tr>
+            <tr><th scope="row"><a href="{% url add_questions %}" title="My questions">{% blocktrans %}My Questions{% endblocktrans %}</a></th></tr>
+
+        </table>
+    </div>
+
+</div>
+{% endblock %}
+{% block sidebar %}
+<div id="content-related"></div>
+{% endblock %}
+
+
+
+<!--<a href ="{% url add_exam %}">My Papers</a>-->
+<!--<a href ="{% url add_question_set %}">My Paper-Set</a>-->
+<!--<a href ="{% url add_questions %}">My  Questions</a>-->

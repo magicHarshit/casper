@@ -1,0 +1,108 @@
+{% extends "layouts/layout_base_2_columns.html" %}
+
+{% block A_1 %}
+
+
+
+{% if msg %}
+   {{ msg }}
+{% endif %}
+
+
+{% if institutes_search_results %}
+    {% for institute in institutes_search_results %}
+        {{ institute.name }} {{ institute.description }}<br>
+        <form class ="form-signin" method="post" action="{% url add_institutes %}"> {% csrf_token %}
+            <input type="hidden" value="{{ institute.id }}" name="institute_id">
+        <input class="btn btn-primary" type="submit" value ="Add to Myconnection"></button><br>
+        </form>
+    {% endfor %}
+
+{% endif %}
+
+{% if connected_institutes %}
+{{ connected_institutes }}
+{% endif %}
+
+
+
+
+<form class = "form-connection" style="padding-bottom: 10px" enctype="multipart/form-data" class ="form-signin" method="post"> {% csrf_token %}
+
+    {% for each_field in form.visible_fields %}
+
+        {% if each_field.name == 'group' %}
+            {{ each_field.label }}:<br>
+            <select id="id_group" name="group" >
+                {% for group in groups %}
+                        <option value="{{ group.id }}" class="groupName">
+                            {{ group.name }}
+                        </option>
+                {% endfor %}
+            </select>
+            <br>
+        {% else %}
+            {{ each_field.label }}:<br>
+            {{ each_field }}
+        {% endif %}
+    {% endfor %}
+
+
+
+    {% for each_field in form.visible_fields %}
+            {%  if each_field.errors %}
+            {{ each_field.errors }}
+            {% endif %}
+    {% endfor %}
+
+    <input class="btn btn-primary" type="submit" value ="Upload"></button>
+</form>
+<div>
+<table class="form-connection">
+<tr>
+    <th>
+        Number
+    </th>
+    <th>
+        Group
+    </th>
+    <th>
+        Csv File Name
+    </th>
+    <th>
+        Action
+    </th>
+</tr>
+
+{% for csv_obj in csv_objs %}
+
+        <tr>
+            <form enctype="multipart/form-data" action = "{% url register_users %}"  method="post"> {% csrf_token %}
+            <td>
+                {{ forloop.counter }}
+            </td>
+            <td>
+                {{ csv_obj.group__name }}
+            </td>
+            <td>
+                <a href="{{ MEDIA_URL }}{{ csv_obj.file_upload }}">{{ csv_obj.file_upload }}</a>
+            </td>
+
+        <input type="hidden" value = "{{ csv_obj.id }}" name="csv_obj_id">
+            <td>
+                <input class="btn btn-primary" type="submit" value ="Register"></button>
+            </td>
+            </form>
+            <td>
+                <form enctype="multipart/form-data" action = "{% url delete_csv %}"  method="post"> {% csrf_token %}
+                <input type="hidden" value = "{{ csv_obj.id }}" name="csv_obj_id">
+                <input class="btn btn-primary" type="submit" value ="Delete"></button>
+                </form>
+            </td>
+        </tr>
+
+{% endfor %}
+</table>
+</div>
+
+{% endblock A_1 %}

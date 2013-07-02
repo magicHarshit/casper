@@ -1,0 +1,31 @@
+{% extends "layouts/layout_base_2_columns.html" %}
+{% block A_1 %}
+    <div class ="logo">
+
+        <img  src ="{{ MEDIA_URL }}{{ image_path.photo }}">
+        {% if group_type == 'Institute' %}
+            <strong><a href="{% url edit_image %}">Edit Image</a></strong>
+        {% endif %}
+
+    </div>
+        <form class="form-inline" enctype="multipart/form-data" method="post" style="margin-right: 384px"> {% csrf_token %}
+            <h2><strong>Your Profile Information</strong></h2>
+            {% for each_field in form.visible_fields %}
+                <div class="control-group">
+                    <label class="control-label" for="id_{{ each_field.label|lower }}">{{ each_field.label }}</label>
+                    <div class="controls">
+                    {%  if each_field.errors %}
+                    {{ each_field.errors }}
+                    {% endif %}
+                        {% if each_field.name == 'address' %}
+                            <textarea id="id_address" name="address" cols="27" rows="4">{{ each_field.value }}</textarea>
+                        {% else %}
+                            {{ each_field }}
+                        {% endif %}
+                     </div>
+                </div>
+            {% endfor %}
+             <input class="btn btn-primary" type="submit" value ="Submit Profile"></button>
+        </form>
+{% endblock A_1 %}
+

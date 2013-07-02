@@ -1,0 +1,26 @@
+{% extends "layouts/layout_base_2_columns.html" %}
+
+{% block A_1 %}
+
+<form action="{% url static_group_config %}" method="post">{% csrf_token %}
+{#<form action="{% url static_group_config %}" class ="form-group" method="post"> {% csrf_token %}#}
+
+
+    {% for each_field in form.visible_fields %}
+    {%  if each_field.errors %}
+        {{ each_field.errors }}
+    {% endif %}
+{#    {% if each_field.name == 'description' %}#}
+{#        {{ each_field.label }}#}
+{#        <textarea id="id_description" name="description" cols="18" rows="5"></textarea>#}
+{#    {% else %}#}
+        {{ each_field.label }}
+        {{ each_field }}
+{#    {% endif %}#}
+    {% endfor %}
+
+    <input class="btn btn-primary" type="submit" value ="Add to My Group"></button>
+</form>
+
+{% endblock A_1 %}
+

@@ -1,0 +1,76 @@
+<!--{% load i18n admin_modify adminmedia %}-->
+<!--{% block extrahead %}-->
+<!--{% url admin:jsi18n as jsi18nurl %}-->
+<!--&lt;!&ndash;<script>function gettext(txt){ return txt}</script> &ndash;&gt;-->
+<!--<script type="text/javascript" src="../../../jsi18n/"></script>-->
+
+<!--<script type="text/javascript" src="{{ADMIN_PATH}}jsi18n/"></script>-->
+<!--<script type="text/javascript" src= "{{ MEDIA_URL }}scripts/jquery-1.5.1.min.js"></script>-->
+
+<!--<script type="text/javascript" src="{% admin_media_prefix %}js/core.js"></script>-->
+<!--<script type="text/javascript" src="{% admin_media_prefix %}js/admin/RelatedObjectLookups.js"></script>-->
+
+<!--<script type="text/javascript" src="{% admin_media_prefix %}js/jquery.min.js"></script>-->
+<!--<script type="text/javascript" src="{% admin_media_prefix %}js/jquery.init.js"></script>-->
+<!--<script type="text/javascript" src="{% admin_media_prefix %}js/actions.min.js"></script>-->
+<!--<script type="text/javascript" src="{% admin_media_prefix %}js/SelectBox.js"></script>-->
+<!--<script type="text/javascript" src="{% admin_media_prefix %}js/SelectFilter2.js"></script>-->
+<!--<script type="text/javascript">window._admin_media_prefix_ = "{% filter escapejs %}{% admin_media_prefix %}{% endfilter %}";</script>-->
+<!--<script type="text/javascript" src="{% admin_media_prefix %}js/calendar.js"></script>-->
+<!--<script type="text/javascript" src="{% admin_media_prefix %}js/admin/DateTimeShortcuts.js"></script>-->
+<!--{% endblock %}-->
+
+<!--{% block extrastyle %}<link rel="stylesheet" type="text/css" href="{% admin_media_prefix %}css/forms.css"/>{% endblock %}-->
+
+
+<!--{#{% block coltype %}colMS{% endblock %}#}-->
+<!--{#{% block bodyclass %}dashboard{% endblock %}#}-->
+
+<!--{% block breadcrumbs %}-->
+<!--<div class = breadcrumbs>-->
+    <!--<a href="#" title="Home">Home</a>-->
+<!--</div>-->
+<!--{% endblock %}-->
+
+
+<!--{% block content %}-->
+
+
+<!--<form enctype="multipart/form-data" method="post"> {% csrf_token %}-->
+    <!--<div>-->
+
+
+        <!--{% for each_field in questions.visible_fields %}-->
+
+        <!--{%  if each_field.errors %}-->
+        <!--{{ each_field.errors }}-->
+        <!--{% endif %}-->
+
+        <!--<div class="form-row {{each_field.name}}: ">-->
+            <!--<div>-->
+
+                <!--<label>{{each_field.label}}</label>-->
+                <!--{{each_field}}-->
+
+            <!--</div>-->
+        <!--</div>-->
+        <!--<br>-->
+        <!--{% endfor %}-->
+
+        <!--<h2> Choices</h2>-->
+        <!--{{  choices.as_p }}-->
+        <!--<h2> Answer</h2>-->
+        <!--{{ answer.as_p }}-->
+
+    <!--</div>-->
+
+    <!--</div>-->
+    <!--<div class="submit-row">-->
+        <!--<input id accept="id_submit" class="default" type="submit" value="Submit">-->
+    <!--</div>-->
+
+<!--</form>-->
+<!--{% endblock %}-->
+<!--{% block sidebar %}-->
+<!--<div id="content-related"></div>-->
+<!--{% endblock %}-->

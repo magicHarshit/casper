@@ -1,0 +1,20 @@
+{% block doctype %}<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">{% endblock doctype %}
+<html xmlns="http://www.w3.org/1999/xhtml">
+{% block head %}
+<head>
+
+    {% block css %}{% endblock css%}
+    {% block extra_css %}{% endblock extra_css %}
+    {% block js %}{% endblock js%}
+    {% block js_extra %}{% endblock js_extra %}
+    {% block adunit %}
+    {{GAM_HEAD}}
+    {% endblock adunit %}
+</head>
+{% endblock head %}
+<body>
+{% block header %}{% endblock header %}
+{% block body %}{% endblock body %}
+{% block footer %}{% endblock footer %}
+</body>
+</html>

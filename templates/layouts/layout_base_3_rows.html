@@ -1,0 +1,38 @@
+{% extends 'layouts/layout_base.html' %}
+
+{% block css %}
+<link rel="stylesheet" href="{{ STATIC_URL }}default/media/bootstrap/css/bootstrap.css" type="text/css" media="all" />
+<!--<link rel="stylesheet" href="{{ STATIC_URL }}default/media/style/bodyTwitter.css" type="text/css" media="screen">-->
+<!--<link rel="stylesheet" href="{{ STATIC_URL }}default/media/style/form.css" type="text/css" media="screen">-->
+<link type="text/css" rel="stylesheet" media="all" href="{{ STATIC_URL }}default/media/style/headerTwitter.css" />
+<link type="text/css" rel="stylesheet" media="all" href="{{ STATIC_URL }}default/media/style/homepage.css" />
+{% endblock css %}
+
+{% block js %}
+<script src="{{ STATIC_URL }}default/media/js/jquery-1.7.2.min.js"></script>
+<script src="{{ STATIC_URL }}default/media/js/underscore-min.js"></script>
+<script src="{{ STATIC_URL }}default/media/js/backbone-min.js"></script>
+<script src="{{ STATIC_URL }}default/media/bootstrap/js/bootstrap.min.js"></script>
+<!--<script src="https://twimg0-a.akamaihd.net/c/swift/init.a94127d49f2b59fcce581870ebbe241a0954605f.js"></script>-->
+<!--<script type="text/javascript" src="https://dev.twitter.com/sites/default/files/js/js_c83197045ec647ad5e5756bd12f51a5a.js"></script>-->
+{% endblock js %}
+
+{% block meta %}
+{% endblock %}
+
+{% block header %}
+    {% include 'shared/header.html' %}
+{% endblock header %}
+
+{% block body %}
+    {% block body_content %}
+        {% block A_1 %}{% endblock A_1 %}
+        {% block pagination %} {% endblock pagination %}
+    {% endblock body_content %}
+{% endblock body %}
+
+{% block footer %}
+    {% block footer_content %}
+        {% include 'shared/footer.html' %}
+    {% endblock footer_content %}
+{% endblock footer %}

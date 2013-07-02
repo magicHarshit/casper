@@ -1,0 +1,77 @@
+{% extends "layouts/layout_base_2_columns.html" %}
+
+{% block A_1 %}
+
+<div class="homePageContainer">
+    <img src="{{ STATIC_URL }}default/media/images/casper2.jpg " width="656" >
+
+</div>
+<div class="clear"></div>
+<!--<div class ="container">-->
+    <form class="form-inline" action="/" method="post">{% csrf_token %}
+        <h2 class="form-horizontal-heading">Please Login</h2>
+        <div class="control-group">
+            <div class="controls">
+
+                {% if err_msg %}
+                {{ err_msg }}
+                {% endif %}
+                {% for each_field in login_form.visible_fields %}
+                {% if each_field.errors %}
+                {{ each_field.errors }}
+                {% endif %}
+                {{ each_field}}<br><br>
+                {% endfor %}
+                <label class="checkbox">
+                    <input type="checkbox"> Remember me
+                </label>
+            </div>
+        </div>
+        <input class="btn btn-primary" type="submit" value ="Login"></button>
+    </form>
+<!--</div>-->
+<div class="clear"></div>
+
+
+
+    <div class="form-signin">
+        <div class ="registerInside">
+            <a href="#mySignupModal" role="button" class="btn btn-primary" data-toggle="modal">Registered User.SignUp Here</a>
+        </div>
+    </div>
+<!--</div>-->
+
+<div id="mySignupModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="width: 275px; margin-left:-154px">
+
+    <form action="{% url register %}" method="post">{% csrf_token %}
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h2 id="mySignupModalLabel">Please Signup</h2>
+        </div>
+
+        <div class="modal-body">
+            {% for each_field in registration_form.visible_fields %}
+            <div class="control-group">
+                <div class="controls">
+                    {%  if each_field.errors %}
+                    {{ each_field.errors }}
+                    {% endif %}
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+                            <li><a tabindex="-1" href="#">Action</a></li>
+                            <li><a tabindex="-1" href="#">Another action</a></li>
+                        </ul>
+                        {{each_field}}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="modal-footer">
+            <input class="btn btn-primary" type="submit" value ="Signup"></button>
+        </div>
+    </form>
+</div>
+
+{% endblock A_1 %}
+
+

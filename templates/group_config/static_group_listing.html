@@ -1,0 +1,43 @@
+{% extends "layouts/layout_base_2_columns.html" %}
+
+{% block A_1 %}
+
+
+<table class="form-connection" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+        <tr>
+            <th>Number</th>
+            <th>Name</th>
+            <th>Description</th>
+        </tr>
+        {% for group in groups %}
+            <form action="{% url delete_group %}" method="post">{% csrf_token %}
+
+            <tr>
+
+                <td>
+                    {{ forloop.counter }}
+                </td>
+                <td>
+                    <a href="{% url edit_group group.id %}">
+                    {{ group.name }}
+                    </a>
+                </td>
+                <td>
+                    {{group.description }}
+                </td>
+
+                <td>
+                    <input type="text" value="{{ group.id }}" name="id">
+                </td>
+                <td>
+                    <input type="submit" value="Delete">
+                </td>
+            </tr>
+            </form>
+        {% endfor %}
+        <tr>
+            <a  class="btn btn-primary groupListButton" href ="{% url static_group_config %}"> Add Group To List </a>
+        </tr>
+</table>
+
+{% endblock A_1 %}
