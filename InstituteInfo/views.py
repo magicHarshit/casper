@@ -241,10 +241,10 @@ def students_connected_to_institute(request):
 #
 
 from facultyinfo.models import FacultyInfo
-def faculty_connected_to_institute(request):
-    institute = InstitueInfo.objects.get(user = request.user)
-    connected_faculty = FacultyInfo.objects.filter(institute = institute,profile = True).values('id','email','contact_number','address','qualification','work_experience','rating')
-    return  render_to_response('instituteinfo/myfaculty.html', locals(), context_instance = RequestContext(request))
+# def faculty_connected_to_institute(request):
+#     institute = InstitueInfo.objects.get(user = request.user)
+#     connected_faculty = FacultyInfo.objects.filter(institute = institute,profile = True).values('id','email','contact_number','address','qualification','work_experience','rating')
+#     return  render_to_response('instituteinfo/myfaculty.html', locals(), context_instance = RequestContext(request))
 
 
 def delete_student(request):

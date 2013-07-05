@@ -16,6 +16,8 @@ from studentinfo.models import StudentInfo
 from InstituteInfo.models import WallPost, InstitueInfo
 from django.views.static import serve
 from InstituteInfo.views import extract_logo_path
+from facultyinfo.models import FacultyConnections
+from django.db.models import Q
 
 
 
@@ -41,12 +43,11 @@ class StudentInbox(TemplateView):
             return locals()
         student_instance = StudentInfo.objects.get(user = self.request.user, status = 'Verified')
         institute = student_instance.institute
-
-
-        wallpost_by_user =  institute.user
-        all_wall_posts = WallPost.objects.filter(user = wallpost_by_user,group = student_instance.insti_group).values('wall_post')
+        connected_faculty_user = FacultyConnections.objects.filter(student= student_instance).values_list('faculty__user',flat=True)
+        all_wall_posts = WallPost.objects.filter(Q(user__in = connected_faculty_user,group__name__icontains = 'All') |
+                                                Q(group = student_instance.insti_group)|
+                                                Q(user=student_instance.institute.user,group__name__icontains = 'All')).values('wall_post','user__username','group__name')
 
         image_path = extract_logo_path(institute)
-
         return locals()
 

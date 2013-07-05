@@ -1,13 +1,12 @@
 __author__ = 'harshit'
 
 def base_items(request):
-    try:
-        group_type = request.user.groups.get(name = 'Institute').name
-    except:
-        try:
-            group_type = request.user.groups.get(name = 'Student').name
-        except:
-            group_type = None
-    return{
-        'group_type':group_type
-    }
+    if request.user.is_authenticated():
+        group_names = request.user.groups.values_list('name',flat=True)
+        if 'Faculty' in group_names:
+            return {'group_type':'Faculty'}
+        if 'Institute' in group_names:
+            return {'group_type':'Institute'}
+        if 'Student' in group_names:
+            return {'group_type':'Student'}
+    return {'group_type':None}

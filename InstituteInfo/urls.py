@@ -1,7 +1,7 @@
 __author__ = 'harshit'
 
 from django.conf.urls.defaults import patterns , url
-from InstituteInfo.views import InstituteProfile, StudentVerification,EditImage, delete_post, ajax_save_images, InstituteSearch,add_institutes,connected_institutes, CsvInfoUpload, registrationFromCsv,students_connected_to_institute,delete_student,groups,change_wall_group,faculty_connected_to_institute, delete_faculty,delete_csv
+from InstituteInfo.views import InstituteProfile, StudentVerification,EditImage, delete_post, ajax_save_images, InstituteSearch,add_institutes,connected_institutes, CsvInfoUpload, registrationFromCsv,students_connected_to_institute,delete_student,groups,change_wall_group, delete_faculty,delete_csv
 #TODO MairajKhan
 #from endless_pagination.views import AjaxListView
 
@@ -21,8 +21,6 @@ urlpatterns = patterns( '',
 	 url( r'^add_connection/$', add_institutes, name = 'add_institutes' ),
 
 	 url( r'^connected_connection/$', connected_institutes ),
-
-     url( r'^connected_faculty/$', faculty_connected_to_institute, name = 'connected_faculty' ),
 
 	 url( r'^csv/$', CsvInfoUpload.as_view(), name = 'csv_upload' ),
 

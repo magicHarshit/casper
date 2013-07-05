@@ -12,7 +12,8 @@
 <div class="form-inline" style="width: 489px">
     <div class="content">
         {{ wall_post.wall_post }}<br>
-        {{wall_post.2}}
+        By:{{wall_post.user__username}}
+        Group:{{ wall_post.group__name }}
     </div>
 </div>
 {%  endfor  %}

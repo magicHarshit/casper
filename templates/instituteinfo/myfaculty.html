@@ -18,20 +18,20 @@
                 <form enctype="multipart/form-data" method="post" action="{% url delete_faculty %}"> {% csrf_token %}
                     <tr>
                         <td>{{each.id}}</td>
-                        <td>{{each.email}}</td>
+                        <td><a href="{% url faculty_detail each.id each.email %}">{{each.email}}</a></td>
                         <td>{{each.contact_number}}</td>
                         <td>{{each.address}}</td>
                         <td>{{each.qualification}}</td>
                         <td>{{each.work_experience}}</td>
                         <td>{{each.rating}}</td>
-
                         <td>
                             <input type="hidden" value = "{{ each.id }}" name="id">
                         </td>
-
+                        {% if group_type == 'Institute' %}
                         <td>
                             <input class="btn btn-primary" type="submit" value ="Delete"></button>
                         </td>
+                        {% endif %}
                 </form>
             {% endfor %}
         </table>
