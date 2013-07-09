@@ -1,6 +1,3 @@
-__author__ = 'harshit'
-
-
 
 from models import StudentInfo
 from django.contrib import admin

@@ -45,7 +45,7 @@ body {
     margin-top: 30px;
     width:230px;
     float: right;
-    margin-right: 175px;
+    margin-right: 123px;
 
 }
 .homePageContainer {
@@ -82,9 +82,54 @@ body {
 
 .logo{
     position: absolute;
-    width: 200px;
-    margin: 34px 0px 0px 400px;
+    margin-top: 0;
+    top:298px;
+    left:123px;
+    border: 4px solid #FFFFFF;
+    border-radius: 2px 2px 2px 2px;
+    height: 160px;
+    width: 160px;
+
+}
+
+.formStudents{
+    position: absolute;
+    margin-top: 0;
+    top:478px;
+    left:123px;
     border: 1px solid #e5e5e5;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+    -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+    box-shadow: 0 1px 2px rgba(0,0,0,.50);
+    height: 160px;
+    width:438px;
+}
+.formFaculty{
+    position: absolute;
+    margin-top: 0;
+    top:678px;
+    left:123px;
+    border: 1px solid #e5e5e5;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+    -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+    box-shadow: 0 1px 2px rgba(0,0,0,.50);
+    height: 160px;
+    width:438px;
+}
+
+.studentImage{
+    position: relative;
+    height:24%;
+    width: 24%;
+    float: left;
+    margin:1px 1px 1px 1px !important;
+    display: inline;
 }
 
 .form-frienRequest{
@@ -111,21 +156,60 @@ body {
     -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
     -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
     box-shadow: 0 1px 2px rgba(0,0,0,.50);
-    margin-top: 30px;
+    margin-top: 261px;
     width:230px;
     float: right;
-    margin-right: 182px;
+    margin-right: 123px;
 
 }
+.user_list{
+        position:relative;
+        height: 100px;
+        width:100px;
+        margin-top: 100px;
+}
+.listingFaculty{
+     background-color: #fff;
+    border: 1px solid #e5e5e5;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+    -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+    box-shadow: 0 1px 2px rgba(0,0,0,.50);
+    display: inline-block;
+    margin: 0 0 13px 13px;
+    padding: 0 10px 0 0;
+    vertical-align: top;
+    width: 390px;
+}
+.listingButton{
+    vertical-align: middle;
+    display: inline-block;
+    /*margin-left: 5px;*/
+    /*margin-right: 5px;*/
+    float: right;
+    /*display: inline;*/
+    margin-top: -60px;
+}
+
+.facultyName{
+    color: #333333;
+    font-weight: bold;
+    font-size: 13px;
+    display: inline-block;
+    vertical-align: middle;
+    height: 100px;
+}
+
 .form-connection {
     background-color: #FFFFFF;
     border: 1px solid #E5E5E5;
     border-radius: 5px 5px 5px 5px;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
-
-    margin: 30px 369px 20px 275px;
+    margin: 268px 123px;
     padding-left: 8px;
-    width: 799px;
+    width: 1037px;
 }
 
 td {

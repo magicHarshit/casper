@@ -1,9 +1,5 @@
-__author__ = 'harshit'
-
-
 from models import InstitueInfo, InstituteLocation, InstituteUser
 from django.contrib import admin
-#import askbot
 
 
 class InstituteLocationInline(admin.StackedInline):

@@ -7,7 +7,7 @@ from InstituteInfo.forms import WallPostForm
 from studentinfo.models import StudentInfo
 from InstituteInfo.models import *
 from models import FacultyInfo,FacultyConnections
-
+from InstituteInfo.views import extract_logo_path
 
 class FacultyDetail( TemplateView):
     template_name = 'facultyinfo/faculty.html'
@@ -22,6 +22,7 @@ class FacultyDetail( TemplateView):
         groups = StaticGroup.objects.filter(institute= institute).values('name','id')
         if 'Student' in self.request.user.groups.values_list('name',flat=True):
             connected = FacultyConnections.objects.filter(student__user=self.request.user,faculty=faculty_obj).count()
+        image_path = extract_logo_path(self.request.user)
         return locals()
 
     def post(self, *args, **kwargs):
@@ -35,17 +36,15 @@ class FacultyDetail( TemplateView):
             return HttpResponseRedirect("")
         return render_to_response("facultyinfo/faculty.html",locals(),context_instance = RequestContext(self.request))
 
-#login require,for faculty and student(group_required)
 def faculty_connected_to_institute(request):
     if 'Institute' in request.user.groups.values_list('name',flat = True):
         institute = InstitueInfo.objects.get(user = request.user)
     else:
         institute = StudentInfo.objects.get(user=request.user).institute
-    connected_faculty = FacultyInfo.objects.filter(institute = institute,profile = True).values('id','email','contact_number','address','qualification','work_experience','rating')
+    connected_faculties_id = FacultyInfo.objects.filter(institute = institute,profile = True).values_list('id',flat=True)
+    faculties = ExtraDetails.objects.filter(appldetail__id__in = connected_faculties_id).values('photo','appldetail__first_name','appldetail__last_name')
     return  render_to_response('instituteinfo/myfaculty.html', locals(), context_instance = RequestContext(request))
 
-
-#decorator-login_required and group_required_student
 def follow_faculty(request,*args,**kwargs):
     faculty_username = kwargs.get('faculty_username')
     student_instance = StudentInfo.objects.get(user = request.user)

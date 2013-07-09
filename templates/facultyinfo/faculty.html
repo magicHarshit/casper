@@ -1,17 +1,41 @@
 {% extends "layouts/layout_base_2_columns.html" %}
 {% block A_1 %}
 
-
-   {% if group_type == 'Faculty' %}
-    <div class ="logo">
-        <img  src ="{{ STATIC_URL }}default/media/{{ image_path.photo }}">
-        <strong><a href="{% url edit_image %}">Edit Image</a></strong>
+    <div style =" border-style: solid;border-width: 1px;left: 123px;position: absolute;right: 123px;top: 0">
+    <img  src ="{{ MEDIA_URL }}uploads/student_signature/5/personal2.jpg">
     </div>
 
-    <form class="form-wallPost"  method="post" style= "width: 541px ">{% csrf_token %}
-{#        {% url faculty_detail self.request.user.id self.request.user.username%}#}
-        <div class="modal-header">
 
+    <div class ="logo">
+        <img  src ="{{ MEDIA_URL }}{{ image_path.photo }}" height="100%" width="100%">
+        <div id = 'editImage' style="margin-top: -20px;display: block" >
+        <strong><a href="{% url edit_image %}">Edit Image</a></strong>
+        </div>
+    </div>
+
+    <form class="formStudents">
+        <div class="modal-header">
+            <a href ={% url connected_students %}><strong>Connections</strong></a>
+        </div>
+        <div class="modal-body">
+            <div class="studentImage">
+                    <img  src ="{{ MEDIA_URL }}{{ image_path.photo }}" height="100%" width="100%">
+            </div>
+             <div class="studentImage">
+                    <img  src ="{{ MEDIA_URL }}{{ image_path.photo }}" height="100%" width="100%">
+            </div>
+             <div class="studentImage">
+                    <img  src ="{{ MEDIA_URL }}{{ image_path.photo }}" height="100%" width="100%">
+            </div>
+            <div class="studentImage">
+                    <img  src ="{{ MEDIA_URL }}{{ image_path.photo }}" height="100%" width="100%">
+            </div>
+        </div>
+    </form>
+    {% if group_type == 'Faculty' %}
+
+    <form class="form-wallPost"  method="post" style= "width: 541px ">{% csrf_token %}
+        <div class="modal-header">
             <h2>Bulletin Board:Post Your Bulletins Here.</h2>
         </div>
         <div class="modal-body">
@@ -47,7 +71,7 @@
         <div class="modal-header">
             {{wall_post.date_posted}}
             {% if group_type == 'Faculty' %}
-            <select>
+            <select id ="wallGroup" select class="wallGroups">
                 <option value="">None</option>
                 {% for group in groups %}
                     {% if group.id == wall_post.group__id %}
@@ -90,4 +114,26 @@
 
 </script>
 
+    <script type="text/javascript">
+    $("document").ready(function(){
+        $(".icon-trash").hide()
+        $(".wallGroups").hide()
+    });
+        $(".form-inline").hover(function(){
+            $(this).find(".icon-trash").show()
+            $(this).find(".wallGroups").show()
+            $(".form-inline").mouseleave(function(){
+                $(".icon-trash").hide()
+                $(".wallGroups").hide()
+            })
+           });
+
+    $(".logo").hover(function(){
+            $(this).find("#editImage").show()
+            $(".logo").mouseleave(function(){
+                $(this).find("#editImage").hide()
+            })
+
+           });
+</script>
 {% endblock A_1 %}

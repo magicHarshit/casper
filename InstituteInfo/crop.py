@@ -1,11 +1,8 @@
 __author__ = 'harshit'
 from django.conf import settings
-from PIL import Image#for PIL
-# import Image#for Pillow
+from PIL import Image
 
 def crop_image( kwargs):
-#    ll = 1
-
     left = int(kwargs['x'])
     top = int(kwargs['y'])
     width = int(kwargs['w'])

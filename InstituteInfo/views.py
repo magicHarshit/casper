@@ -1,5 +1,3 @@
-__author__ = 'harshit'
-
 from django.contrib.auth.forms import AuthenticationForm
 from django.template.context import RequestContext
 from userapp.forms import  LoginAuthenticationForm, RegistrationForm
@@ -18,17 +16,21 @@ from InstituteInfo.models import *
 from crop import crop_image
 import copy
 from django.utils.decorators import method_decorator
-#todo Mairajkhan
-#from endless_pagination.decorators import page_template
 import settings
 from bulletinMail import sendMailThread
 from django.core import serializers
 from django.forms.models import modelform_factory
+from forms import CsvInfoForm
+from models import CsvInfo
+import csv
+from django.contrib.auth.forms import UserCreationForm
+from django.core.mail import EmailMultiAlternatives
+from django.conf import settings
+from facultyinfo.models import FacultyInfo
+
 
 
 class PaginationMixin(object):
-    #TODO Mairajkhan
-    #@method_decorator(page_template('instituteinfo/pagination.html'))
     def dispatch(self, request, *args, **kwargs):
         return super(PaginationMixin, self).dispatch(request, *args, **kwargs)
 
@@ -41,16 +43,20 @@ class InstituteProfile( PaginationMixin,TemplateView):
 
         all_wall_posts = WallPost.objects.filter(user = self.request.user).values('wall_post','id','date_posted','group__name','group__id','user__username').order_by('-id')
         institute = InstitueInfo.objects.get(user = self.request.user)
+        image_path = extract_logo_path(self.request.user)
 
         students = StudentInfo.objects.filter(institute = institute, status = 'Pending').values('user')
         students_ids = [student['user'] for student in students]
         student_users = User.objects.filter(id__in = students_ids).values('username','id')
-        image_path = extract_logo_path(institute)
+
+        faculty_images = extract_faculty_info(institute)
+        student_images = extract_student_info(institute)
+
         groups = StaticGroup.objects.filter(institute= institute).values('name','id')
         return locals()
 
     def post(self, *args, **kwargs):
-        wall_post = WallPostForm(data = self.request.POST)
+        wall_post = WallPostForm(data =    self.request.POST)
         if wall_post.is_valid():
             wall_post_obj = wall_post.save(commit= False)
             wall_post_obj.user = self.request.user
@@ -61,8 +67,8 @@ class InstituteProfile( PaginationMixin,TemplateView):
             return HttpResponseRedirect(".")
         return render_to_response("instituteinfo/institute_profile.html",locals(),context_instance = RequestContext(self.request))
 
-def extract_logo_path(institute):
-    image_path = ExtraDetails.objects.filter( appldetail = institute).values('photo')
+def extract_logo_path(user):
+    image_path = ExtraDetails.objects.filter( appldetail = user).values('photo')
     if image_path:
         image_path = image_path[0]
     return image_path
@@ -83,18 +89,15 @@ class EditImage(TemplateView):
 
 def ajax_save_images( request ):
 
-    app_id = request.user.id
-    if app_id:
+    if request.user.is_authenticated():
 
-        app_obj = InstitueInfo.objects.get( user__id = app_id )
         img_crop_dict = copy.deepcopy( eval( request.POST['crop_dictionary'] ) )
-
         for file_key, file_val in request.FILES.items():
-            extra_details = ExtraDetails.objects.filter( appldetail = app_obj, type = file_key )
+            extra_details = ExtraDetails.objects.filter( appldetail = request.user, type = file_key )
 
             if  len( extra_details ) <= 0:
-                file_val.name = str( app_obj.id ) + '_' + file_key + '.' + file_val.name.split( '.' )[-1]
-                extra_details = ExtraDetails( appldetail = app_obj, type = file_key, photo = file_val )
+                file_val.name = str( request.user.id ) + '_' + file_key + '.' + file_val.name.split( '.' )[-1]
+                extra_details = ExtraDetails( appldetail = request.user, type = file_key, photo = file_val )
                 extra_details.save()
             else:
                 extra_details = extra_details[0]
@@ -117,7 +120,6 @@ def ajax_save_images( request ):
                 path = crop_image( crop_dict )
                 extra_details.photo.name = path
                 extra_details.save()
-#        import pdb;pdb.set_trace()
         path_image = settings.MEDIA_URL + path
         return HttpResponse( path_image )
     else:
@@ -139,9 +141,6 @@ class StudentVerification(TemplateView):
         return HttpResponseRedirect(reverse('institute_profile'))
 
 
-from forms import CsvInfoForm
-from models import CsvInfo
-
 class CsvInfoUpload(TemplateView):
     template_name = 'instituteinfo/search.html'
 
@@ -162,10 +161,6 @@ class CsvInfoUpload(TemplateView):
 
 
 
-import csv
-from django.contrib.auth.forms import UserCreationForm
-from django.core.mail import EmailMultiAlternatives
-from django.conf import settings
 
 
 #todo: expensive ;for each user:5 db hit;optimize it
@@ -179,8 +174,6 @@ def registrationFromCsv(request):
     try:
 
         header = csv_reader_fd.next()
-#        csv_fd.writerow( header )
-#        import pdb;pdb.set_trace()
         for each_row in csv_reader_fd:
 
             data = dict(zip(header, each_row))
@@ -206,9 +199,6 @@ def registrationFromCsv(request):
                 form = model_form(data)
                 if form.is_valid():
                     form.save()
-#                student_instance = StudentInfo(user = user, institute = institute, status = 'Verified',profile = True,insti_group= obj.group)
-#                student_instance.save()
-#                import pdb;pdb.set_trace()
                 subject = "Your New Password!"
                 message = random_number
                 msg = EmailMultiAlternatives( subject, '', settings.DEFAULT_FROM_EMAIL, (data['email'],) )
@@ -225,26 +215,10 @@ def registrationFromCsv(request):
 def students_connected_to_institute(request):
 
     institute = InstitueInfo.objects.get(user = request.user)
-    connected_students = StudentInfo.objects.filter(institute = institute, status = 'Verified', profile = True).values('id','unique_number','user__username','first_name','last_name','insti_group__name','insti_group__id')
-    groups = StaticGroup.objects.filter(institute= institute).values('name','id')
-
+    connected_students_ids = StudentInfo.objects.filter(institute = institute, status = 'Verified', profile = True).values_list('user_id',flat=True)
+    students = ExtraDetails.objects.filter(appldetail__id__in = connected_students_ids).values('photo','appldetail__first_name','appldetail__last_name')
     return  render_to_response('instituteinfo/mystudents.html', locals(), context_instance = RequestContext(request))
 
-
-#def faculty_connected_to_institute(request):
-#
-#    institute = InstitueInfo.objects.get(user = request.user)
-#    connected_faculty = StudentInfo.objects.filter(institute = institute, status = 'Verified', profile = True).values('id','unique_number','user__username','first_name','last_name','insti_group__name','insti_group__id')
-#    groups = StaticGroup.objects.filter(institute= institute).values('name','id')
-#
-#    return  render_to_response('instituteinfo/mystudents.html', locals(), context_instance = RequestContext(request))
-#
-
-from facultyinfo.models import FacultyInfo
-# def faculty_connected_to_institute(request):
-#     institute = InstitueInfo.objects.get(user = request.user)
-#     connected_faculty = FacultyInfo.objects.filter(institute = institute,profile = True).values('id','email','contact_number','address','qualification','work_experience','rating')
-#     return  render_to_response('instituteinfo/myfaculty.html', locals(), context_instance = RequestContext(request))
 
 
 def delete_student(request):
@@ -279,39 +253,20 @@ def groups(request,group_id,student_id):
     student_obj.save()
     return HttpResponse(True)
 
-
-
-#release 2
-#to be corrected later
-#college connection co-square
-
-class InstituteSearch(TemplateView):
-    template_name = 'instituteinfo/search.html'
-    def get_context_data(self, **kwargs):
-        form = InstituteSearchForm()
-        return locals()
-
-    def post(self, * args, **kwargs):
-        search = self.request.POST.get('search')
-        institutes_search_results = InstitueInfo.objects.filter(name__icontains = search).values('name','description','id')
-        return render_to_response('instituteinfo/search.html',locals(),context_instance = RequestContext(self.request))
-
-def add_institutes(request):
-
-    parent_insti = InstitueInfo.objects.get(user = request.user)
-    child_insti = InstitueInfo.objects.get(id = request.POST.get('institute_id'))
-    insti_con_obj = InstitutesConnection(parent_insti = parent_insti, child_insti = child_insti )
-    insti_con_obj.save()
-    insti_con_obj = InstitutesConnection(parent_insti = child_insti, child_insti = parent_insti )
-    insti_con_obj.save()
-    return  HttpResponseRedirect(reverse('connected_institutes'))
-
-def connected_institutes(request):
-    connected_institutes = InstitutesConnection.objects.filter(parent_insti__user = request.user )
-    return  render_to_response('instituteinfo/search.html', locals(), context_instance = RequestContext(request))
-
-
 def delete_csv(request):
     obj = CsvInfo.objects.get(id = request.POST['csv_obj_id'])
     obj.delete()#todo delete file
     return HttpResponseRedirect(reverse('csv_upload'))
+
+def extract_student_info(institute):
+    students = StudentInfo.objects.filter(institute=institute,status='Verified').values('user_id','user__username').order_by('?')[:4]
+    user_ids = [student['user_id'] for student in students]
+    image_info = ExtraDetails.objects.filter( appldetail__id__in = user_ids).values('photo','appldetail__first_name')
+    return image_info
+
+
+def extract_faculty_info(institute):
+    faculties = FacultyInfo.objects.filter(institute=institute).values('user_id','user__username').order_by('?')[:4]
+    user_ids = [faculty['user_id'] for faculty in faculties]
+    image_info = ExtraDetails.objects.filter( appldetail__id__in = user_ids).values('photo','appldetail__first_name')
+    return image_info

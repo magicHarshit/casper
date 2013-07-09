@@ -1,40 +1,37 @@
 {% extends "layouts/layout_base_2_columns.html" %}
 
 {% block A_1 %}
-
-    <div class="form-connection">
-        <table>
-            <tr>
-
-                <th>id</th>
-                <th>email</th>
-                <th>contact_number</th>
-                <th>address<th>
-                <th>qualification<th>
-                <th>work_experience</th>
-                <th>rating</th>
-            </tr>
-            {% for each in connected_faculty %}
-                <form enctype="multipart/form-data" method="post" action="{% url delete_faculty %}"> {% csrf_token %}
-                    <tr>
-                        <td>{{each.id}}</td>
-                        <td><a href="{% url faculty_detail each.id each.email %}">{{each.email}}</a></td>
-                        <td>{{each.contact_number}}</td>
-                        <td>{{each.address}}</td>
-                        <td>{{each.qualification}}</td>
-                        <td>{{each.work_experience}}</td>
-                        <td>{{each.rating}}</td>
-                        <td>
-                            <input type="hidden" value = "{{ each.id }}" name="id">
-                        </td>
-                        {% if group_type == 'Institute' %}
-                        <td>
-                            <input class="btn btn-primary" type="submit" value ="Delete"></button>
-                        </td>
-                        {% endif %}
-                </form>
-            {% endfor %}
-        </table>
+    <div style =" border-style: solid;border-width: 1px;left: 123px;position: absolute;right: 123px;top: 0">
+    <img  src ="{{ MEDIA_URL }}uploads/student_signature/5/personal2.jpg">
     </div>
 
+
+            <div style="margin: 255px 188px 0px 220px">
+            {% for faculty in faculties %}
+                    <div class="listingFaculty">
+
+
+                        <div class="studentImage">
+                            <img  src ="{{ MEDIA_URL }}{{ faculty.photo }}" height="100%" width="100%">
+                         </div>
+                        <div class="facultyName">
+                         {{ faculty.appldetail__first_name }}{{ appldetail__last_name }}
+                        </div>
+
+                        {% if group_type == 'Institute' %}
+                            <form enctype="multipart/form-data" method="post" action="{% url delete_faculty %}"> {% csrf_token %}
+                            <input type="hidden" value = "{{ each.id }}" name="id">
+                             <div class="clear"></div>
+                            <div class="listingButton">
+                                <input class="btn btn-primary" type="submit" value ="Delete"></button>
+                            </div
+                            </form>
+                        {% endif %}
+
+                    </div>
+
+            {% endfor %}
+            </div>
+
 {% endblock A_1 %}
+

@@ -1,8 +1,7 @@
 __author__ = 'harshit'
-
+import datetime
 
 def year_choice():
-    import datetime
     now = datetime.datetime.now()
     current_year = now.year
     year_list = [( current_year - i, current_year - i ) for i in range( 211 )]
@@ -22,3 +21,4 @@ INSTITUTE_USER=(('Chairman','Chairman'),
                 ('Admission user','Admission user'),
                 ('Form user','Form user'),
     )
+

@@ -48,6 +48,6 @@ class StudentInbox(TemplateView):
                                                 Q(group = student_instance.insti_group)|
                                                 Q(user=student_instance.institute.user,group__name__icontains = 'All')).values('wall_post','user__username','group__name')
 
-        image_path = extract_logo_path(institute)
+        image_path = extract_logo_path(self.request.user)
         return locals()
 

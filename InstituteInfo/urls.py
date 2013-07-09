@@ -1,10 +1,5 @@
-__author__ = 'harshit'
-
 from django.conf.urls.defaults import patterns , url
 from InstituteInfo.views import InstituteProfile, StudentVerification,EditImage, delete_post, ajax_save_images, InstituteSearch,add_institutes,connected_institutes, CsvInfoUpload, registrationFromCsv,students_connected_to_institute,delete_student,groups,change_wall_group, delete_faculty,delete_csv
-#TODO MairajKhan
-#from endless_pagination.views import AjaxListView
-
 
 urlpatterns = patterns( '',
 

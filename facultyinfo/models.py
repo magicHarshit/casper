@@ -4,7 +4,8 @@ from django.contrib.auth.models import User
 from InstituteInfo.models import InstitueInfo
 from studentinfo.models import StudentInfo
 from studentinfo.choices import STATUS_CHOICES
-#from choices import EXPERIENCE
+from master.models import ImageInfo
+
 
 class FacultyInfo(models.Model):
 
@@ -18,6 +19,7 @@ class FacultyInfo(models.Model):
     qualification = models.CharField(max_length = 100)
     work_experience = models.CharField(max_length = 100)
     rating = models.FloatField(default= 0)
+    # image = models.ManyToManyField( ImageInfo, through='FacultyImages' )
     connections = models.ManyToManyField( StudentInfo, through='FacultyConnections' )
 
     def __unicode__(self):
@@ -30,3 +32,13 @@ class FacultyConnections(models.Model):
 
     def __unicode__(self):
         return str(self.faculty) + '-'+ str(self.student)
+
+
+
+# class FacultyImages(models.Model):
+#     institute = models.ForeignKey(InstitueInfo)
+#     image = models.ForeignKey(ImageInfo)
+#
+#     def __unicode__(self):
+#         return self.institute + '-' +  self.image
+

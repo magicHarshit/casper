@@ -2,47 +2,57 @@
 
 {% block A_1 %}
 
-<div class="form-connection">
-    <table>
-        <tr>
-            <th>Unique Numbr</th>
-            <th>Username</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Connected To</th>
-        </tr>
-        {% for each in connected_students %}
-                <form enctype="multipart/form-data" method="post" action="{% url delete_student %}"> {% csrf_token %}
-                <tr>
-                <td>{{each.unique_number}}</td>
-                <td> {{each.user__username }}</td>
-                <td> {{each.first_name}}</td>
-                <td> {{each.last_name}}</td>
-                <td>
-                    <select class="group">
-                        <option value="">None</option>
-                        {% for group in groups %}
-                            {% if group.id == each.insti_group__id %}
-                                <option value="{{ group.id }}" selected="True">{{ group.name }}</option>
-                            {% else %}
-                                <option value="{{ group.id }}" class="groupName" onclick="changeGroup('{{ group.id }}','{{ each.id }}')">
-                                    {{ group.name }}
-                                </option>
-                            {% endif %}
-                        {% endfor %}
-                    </select>
-                </td>
 
-                <td>
-                    <input type="hidden" value = "{{ each.id }}" name="id">
-                </td>
-                <td>
-                    <input class="btn btn-primary" type="submit" value ="Delete"></button>
-                </td>
-                </form>
-        {% endfor %}
-    </table>
-</div>
+
+        <div style =" border-style: solid;border-width: 1px;left: 123px;position: absolute;right: 123px;top: 0">
+            <img  src ="{{ MEDIA_URL }}uploads/student_signature/5/personal2.jpg">
+        </div>
+
+
+          <div style="margin: 255px 188px 0px 220px">
+            {% for student in students %}
+                    <div class="listingFaculty">
+
+
+                        <div class="studentImage">
+                            <img  src ="{{ MEDIA_URL }}{{ student.photo }}" height="100%" width="100%">
+                         </div>
+                        <div class="facultyName">
+                         {{ student.appldetail__first_name }}{{ student.appldetail__last_name }}
+                        </div>
+
+                        {% if group_type == 'Institute' %}
+                            <form enctype="multipart/form-data" method="post" action="{% url delete_faculty %}"> {% csrf_token %}
+                                <input type="hidden" value = "{{ each.id }}" name="id">
+                                 <div class="clear"></div>
+                                <div class="listingButton">
+                                    <input class="btn btn-primary" type="submit" value ="Delete"></button>
+                                </div
+                            </form>
+                        {% endif %}
+                    </div>
+
+            {% endfor %}
+            </div>
+        </div>
+
+{#                <form enctype="multipart/form-data" method="post" action="{% url delete_student %}"> {% csrf_token %}#}
+{#                    <select class="group">#}
+{#                        <option value="">None</option>#}
+{#                        {% for group in groups %}#}
+{#                            {% if group.id == each.insti_group__id %}#}
+{#                                <option value="{{ group.id }}" selected="True">{{ group.name }}</option>#}
+{#                            {% else %}#}
+{#                                <option value="{{ group.id }}" class="groupName" onclick="changeGroup('{{ group.id }}','{{ each.id }}')">#}
+{#                                    {{ group.name }}#}
+{#                                </option>#}
+{#                            {% endif %}#}
+{#                        {% endfor %}#}
+{#                    </select>#}
+{#                </td>#}
+{##}
+
+
 
 
 

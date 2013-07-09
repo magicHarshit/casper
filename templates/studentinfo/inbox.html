@@ -2,8 +2,7 @@
 
 {% block A_1 %}
 <div class ="logo">
-{#    <img  src ="{{ STATIC_URL }}default/media/{{ image_path.photo }}">#}
-    <img  src ="{{ STATIC_URL }}default/media/{{ image_path.photo }}">
+    <img  src ="{{ MEDIA_URL }}{{ image_path.photo }}" height="100%" width="100%">
     <strong><a href="{% url edit_image %}">Edit Image</a></strong>
 
 </div>

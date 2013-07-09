@@ -4,6 +4,7 @@ __author__ = 'harshit'
 from django.db import models
 from django.contrib.auth.models import User
 import datetime
+from choices import IMAGE_TYPE
 
 
 class BasicCofigurationFields( models.Model ):
@@ -14,123 +15,23 @@ class BasicCofigurationFields( models.Model ):
     display_flag = models.BooleanField( default = True )
 
     objects = models.Manager()
-    #live = LiveEntryManager()
-    #detail = DetailManager()
 
     class Meta:
         abstract = True
 
 
-class City( BasicCofigurationFields ):
+def imagepath( instance, filename ):
+    """ Computes the infrastructure images upload path """
+    return "uploads/user_images/%s/%s" % ( instance.user.id, str( filename ).replace( " ", "-" ) )
 
-    country = models.ForeignKey( 'Country' )
-    region = models.ManyToManyField( 'Region', through = 'RegionCity' )
-    state = models.ForeignKey( 'State' )
 
-    objects = models.Manager()
-    #master_manager = MasterManager()
 
-    def __unicode__( self ):
-        return self.name
-
-    class Meta:
-        unique_together = ( 'country', 'slug' )
-        ordering = ['name']
-
-class Area( BasicCofigurationFields ):
-    city = models.ForeignKey( City)
-
+class ImageInfo( models.Model ):
+    user = models.ForeignKey(User, blank = True, null = True )
+    photo = models.ImageField( upload_to=imagepath )
+    active = models.BooleanField(default=False)
+    type = models.CharField(choices=IMAGE_TYPE)
     objects = models.Manager()
 
-    class Meta:
-        verbose_name = 'City Area'
-
-    def __unicode__( self ):
-        return self.name + '-' + self.city.name
-
-
-class Locality( BasicCofigurationFields ):
-    area = models.ManyToManyField( Area ,through = 'LocalityArea')
-
-    objects = models.Manager()
-
-    def __unicode__( self ):
-        return self.name
-
-    class Meta:
-        verbose_name = 'City Locality'
-        ordering = ['name']
-
-
-
-class LocalityArea(models.Model):
-    city_id = models.ForeignKey(Locality)
-    area_id = models.ForeignKey(Area)
-
-class Region( BasicCofigurationFields ):
-    """ Stores all the Region Details . Region to Country, State Mapping. """
-
-    state = models.ManyToManyField( 'State', through = 'RegionState', null = True, blank = True )
-    country = models.ForeignKey( 'Country' )
-
-    def __unicode__( self ):
-        return self.name
-
-    class Meta:
-        unique_together = ( 'country', 'slug' )
-
-
-
-class State( BasicCofigurationFields ):
-
-    country = models.ForeignKey( 'Country' )
-
-    objects = models.Manager()
-    #master_manager = MasterManager()
-
-    def __unicode__( self ):
-        return self.name
-    class Meta:
-        unique_together = ( 'country', 'slug' )
-        ordering = ['name']
-
-class RegionState( models.Model ):
-    region = models.ForeignKey( Region )
-    state = models.ForeignKey( State )
-
-    def __unicode__( self ):
-        return self.region.name + '-' + self.state.name
-
-    class Meta:
-        unique_together = ( 'region', 'state' )
-
-class RegionCity( models.Model ):
-    region = models.ForeignKey( Region )
-    city = models.ForeignKey( City )
-
-    def __unicode__( self ):
-        return self.region.name + '-' + self.city.name
-
-    class Meta:
-        unique_together = ( 'region', 'city' )
-
-class Country( BasicCofigurationFields ):
-
-    objects = models.Manager()
-    #master_manager = MasterManager()
-
-    def __unicode__( self ):
-        return self.name
-
-class PinCode( models.Model ):
-
-    pin_code = models.IntegerField( max_length = 6 )
-    display_flag = models.BooleanField( default = True )
-    city = models.ForeignKey( City )
-
-    objects = models.Manager()
-    #master_manager = MasterManager()
-
-    def __unicode__( self ):
-        return str( self.pin_code )
-
+    def __unicode__(self):
+        return self.user + '-' + self.type

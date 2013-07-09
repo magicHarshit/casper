@@ -96,9 +96,9 @@ INSTALLED_APPS = (
     'InstituteInfo',
     'group_config',
     'master',
-    'studentinfo',
+    # 'studentinfo',
     'userapp',
-    'facultyinfo',
+    # 'facultyinfo',
     # 'endless_pagination',
     'custom_context_processor',
     )
