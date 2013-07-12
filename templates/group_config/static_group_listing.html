@@ -2,42 +2,33 @@
 
 {% block A_1 %}
 
+    <div style =" border-style: solid;border-width: 1px;left: 123px;position: absolute;right: 123px;top: 0">
+    <img  src ="{{ MEDIA_URL }}uploads/student_signature/5/personal2.jpg">
+    </div>
 
-<table class="form-connection" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
-        <tr>
-            <th>Number</th>
-            <th>Name</th>
-            <th>Description</th>
-        </tr>
+    <div class ="logo">
+        <img  src ="{{ MEDIA_URL }}{{ image_path.0.photo }}" style="height:100%;width:100%">
+        <div id = 'editImage' style="margin-top: -20px;display: none;" >
+        <strong><a href="{% url edit_image %}">Edit Image</a></strong>
+        </div>
+    </div>
+
+
+    <div class="form-groupListing">
         {% for group in groups %}
-            <form action="{% url delete_group %}" method="post">{% csrf_token %}
-
-            <tr>
-
-                <td>
-                    {{ forloop.counter }}
-                </td>
-                <td>
-                    <a href="{% url edit_group group.id %}">
-                    {{ group.name }}
-                    </a>
-                </td>
-                <td>
-                    {{group.description }}
-                </td>
-
-                <td>
-                    <input type="text" value="{{ group.id }}" name="id">
-                </td>
-                <td>
-                    <input type="submit" value="Delete">
-                </td>
-            </tr>
-            </form>
+            <div class="form-inlineGroup">
+                <div class="modal-header">
+                    <a href="{% url edit_group group.id %}">{{ group.name }}</a>
+                </div>
+                    <br>
+                    <p>{{group.description }}</p>
+                    <form action="{% url delete_group %}" method="post">{% csrf_token %}
+                            <input type="hidden" value="{{ group.id }}" name="id">
+                            <input  type="submit" value="Delete">
+                    </form>
+            </div>
+            <div class="clear"></div>
         {% endfor %}
-        <tr>
-            <a  class="btn btn-primary groupListButton" href ="{% url static_group_config %}"> Add Group To List </a>
-        </tr>
-</table>
-
+    </div>
+<a  class="btn btn-primary groupListButton" href ="{% url static_group_config %}"> Add Group To List </a>
 {% endblock A_1 %}

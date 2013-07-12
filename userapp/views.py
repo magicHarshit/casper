@@ -19,6 +19,7 @@ from facultyinfo.models import FacultyInfo
 
 
 
+
 class EndUserRegistration( TemplateView ):
     template_name = 'userapp/signup.html'
 

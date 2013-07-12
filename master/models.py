@@ -30,7 +30,7 @@ class ImageInfo( models.Model ):
     user = models.ForeignKey(User, blank = True, null = True )
     photo = models.ImageField( upload_to=imagepath )
     active = models.BooleanField(default=False)
-    type = models.CharField(choices=IMAGE_TYPE)
+    type = models.CharField(max_length=100,choices=IMAGE_TYPE)
     objects = models.Manager()
 
     def __unicode__(self):

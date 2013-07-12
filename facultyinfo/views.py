@@ -19,7 +19,7 @@ class FacultyDetail( TemplateView):
         all_wall_posts = WallPost.objects.filter(user__username = username).values('wall_post','id','date_posted','group__name','group__id').order_by('-id')
         faculty_obj = FacultyInfo.objects.get(user__username = username)
         institute = faculty_obj.institute
-        groups = StaticGroup.objects.filter(institute= institute).values('name','id')
+        groups = UserGroup.objects.filter(institute= institute).values('name','id')
         if 'Student' in self.request.user.groups.values_list('name',flat=True):
             connected = FacultyConnections.objects.filter(student__user=self.request.user,faculty=faculty_obj).count()
         image_path = extract_logo_path(self.request.user)
@@ -42,7 +42,7 @@ def faculty_connected_to_institute(request):
     else:
         institute = StudentInfo.objects.get(user=request.user).institute
     connected_faculties_id = FacultyInfo.objects.filter(institute = institute,profile = True).values_list('id',flat=True)
-    faculties = ExtraDetails.objects.filter(appldetail__id__in = connected_faculties_id).values('photo','appldetail__first_name','appldetail__last_name')
+    faculties = ImageInfo.objects.filter(user__id__in = connected_faculties_id).values('photo','user__first_name','user__last_name')
     return  render_to_response('instituteinfo/myfaculty.html', locals(), context_instance = RequestContext(request))
 
 def follow_faculty(request,*args,**kwargs):

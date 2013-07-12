@@ -1,5 +1,7 @@
 from django.conf.urls.defaults import patterns , url
-from InstituteInfo.views import InstituteProfile, StudentVerification,EditImage, delete_post, ajax_save_images, InstituteSearch,add_institutes,connected_institutes, CsvInfoUpload, registrationFromCsv,students_connected_to_institute,delete_student,groups,change_wall_group, delete_faculty,delete_csv
+from InstituteInfo.views import InstituteProfile, StudentVerification,EditImage,\
+    delete_post, ajax_save_images, CsvInfoUpload, registrationFromCsv,\
+    students_connected_to_institute,delete_student,groups,change_wall_group, delete_faculty,delete_csv
 
 urlpatterns = patterns( '',
 
@@ -10,12 +12,6 @@ urlpatterns = patterns( '',
 	 url( r'^edit_image/$', EditImage.as_view(), name = 'edit_image' ),
 
 	 url( r'^ajax-save-image/$', ajax_save_images, name = 'ajax_save_image' ),
-
-	 url( r'^search/$', InstituteSearch.as_view(), name = 'search' ),
-
-	 url( r'^add_connection/$', add_institutes, name = 'add_institutes' ),
-
-	 url( r'^connected_connection/$', connected_institutes ),
 
 	 url( r'^csv/$', CsvInfoUpload.as_view(), name = 'csv_upload' ),
 

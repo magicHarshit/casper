@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Group
 
 # Create your models here.
 
@@ -16,3 +16,5 @@ class LoginDetail( models.Model ):
     ip_address = models.CharField( max_length = 150, blank = True, null = True )
 
 
+class Group(Group):
+    pass

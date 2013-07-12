@@ -2,15 +2,12 @@ __author__ = 'harshit'
 
 
 from django import forms
-from group_config.models import Group, StaticGroup
+from group_config.models import UserGroup
+
+
 
 
 class GroupConfigurationForm(forms.ModelForm):
     class Meta:
-        model = Group
-
-
-class StaticGroupConfigurationForm(forms.ModelForm):
-    class Meta:
-        model = StaticGroup
-        exclude = ('institute',)
+        model = UserGroup
+        exclude = ('owner',)

@@ -2,7 +2,9 @@ from django.db import models
 import datetime
 from master.models import BasicCofigurationFields,ImageInfo
 from InstituteInfo.choices import LIST_YEAR,INSTITUTE_TYPE
-from group_config.models import UserGroup
+# from group_config.models import UserGroup
+from django.contrib.auth.models import User
+from django.db.models.signals import post_save
 
 
 def file_path( instance,filename ):
@@ -22,8 +24,7 @@ class InstitueInfo( BasicCofigurationFields):
     objects = models.Manager()
 
     def __unicode__( self ):
-        return self.user
-
+        return str(self.user)
 
 class InstituteImages(models.Model):
     institute = models.ForeignKey(InstitueInfo)
@@ -34,7 +35,7 @@ class InstituteImages(models.Model):
 
 class WallPost(models.Model):
     user = models.ForeignKey(User)
-    group = models.ForeignKey(UserGroup)#todo urgent harshit,change it later but asap
+    group = models.ForeignKey('group_config.UserGroup')#todo urgent harshit,change it later but asap
     wall_post = models.TextField()
     date_posted = models.DateTimeField(default=datetime.datetime.now(), null= True)
 
@@ -44,7 +45,7 @@ class WallPost(models.Model):
 
 class CsvInfo(models.Model):
     institute = models.ForeignKey( InstitueInfo )
-    group = models.ForeignKey ( UserGroup )
+    group = models.ForeignKey ( 'group_config.UserGroup' )
     file_upload = models.FileField( upload_to = file_path)
     objects = models.Manager()
 
@@ -52,3 +53,8 @@ class CsvInfo(models.Model):
         return str(self.file_upload)
 
 
+
+
+from InstituteInfo.signals import post_save_default_image,post_save_extra_info
+post_save.connect(post_save_default_image, sender= InstitueInfo)
+post_save.connect(post_save_extra_info, sender= InstitueInfo)

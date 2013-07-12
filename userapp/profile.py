@@ -48,10 +48,10 @@ class ProfileSubmission(TemplateView):
             except:
                 faculty_instance = None
             form = FacultyInfoForm( instance = faculty_instance )
-        #todo image only for institute,make it for all three
+        # todo image only for institute,make it for all three
         # import pdb;pdb.set_trace()
-        if institute_instance:
-            image_path = extract_logo_path(institute_instance)
+        # import pdb;pdb.set_trace()
+        image_path = extract_logo_path(self.request.user)
         return locals()
 
     def post(self, *args, **kwargs):

@@ -1,11 +1,9 @@
-__author__ = 'harshit'
 from django import forms
-from models import City,Region
+from master.models import ImageInfo
 
-class CityAdminForm( forms.ModelForm ):
-    class Meta:
-        model = City
 
-class RegionAdminForm( forms.ModelForm ):
-    class Meta:
-        model = Region
+
+class ImagesInfoForm(forms.ModelForm):
+     class Meta:
+         model = ImageInfo
+         fields = ('photo',)

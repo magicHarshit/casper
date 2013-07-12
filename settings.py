@@ -93,14 +93,14 @@ INSTALLED_APPS = (
     'django.contrib.humanize',
     'django.contrib.sitemaps',
     'tinymce',
-    'InstituteInfo',
     'group_config',
+    'InstituteInfo',
     'master',
-    # 'studentinfo',
+    'studentinfo',
     'userapp',
-    # 'facultyinfo',
-    # 'endless_pagination',
+    'facultyinfo',
     'custom_context_processor',
+    'south',
     )
 
 AUTHENTICATION_BACKENDS = (

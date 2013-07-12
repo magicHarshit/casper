@@ -10,8 +10,8 @@ from studentinfo.forms import StudentInfoForm
 from forms import InstituteInfoForm, WallPostForm
 from django.core.urlresolvers import reverse
 from studentinfo.models import StudentInfo
-from models import WallPost, InstitueInfo, ExtraDetails
-from forms import InstituteSearchForm, ExtraDetailsForm
+from models import WallPost, InstitueInfo, ImageInfo
+from master.forms import ImagesInfoForm
 from InstituteInfo.models import *
 from crop import crop_image
 import copy
@@ -27,6 +27,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.core.mail import EmailMultiAlternatives
 from django.conf import settings
 from facultyinfo.models import FacultyInfo
+from group_config.models import UserGroup
 
 
 
@@ -44,15 +45,12 @@ class InstituteProfile( PaginationMixin,TemplateView):
         all_wall_posts = WallPost.objects.filter(user = self.request.user).values('wall_post','id','date_posted','group__name','group__id','user__username').order_by('-id')
         institute = InstitueInfo.objects.get(user = self.request.user)
         image_path = extract_logo_path(self.request.user)
-
         students = StudentInfo.objects.filter(institute = institute, status = 'Pending').values('user')
         students_ids = [student['user'] for student in students]
         student_users = User.objects.filter(id__in = students_ids).values('username','id')
-
         faculty_images = extract_faculty_info(institute)
         student_images = extract_student_info(institute)
-
-        groups = StaticGroup.objects.filter(institute= institute).values('name','id')
+        groups = UserGroup.objects.filter(owner= institute).values('name','id')
         return locals()
 
     def post(self, *args, **kwargs):
@@ -68,9 +66,7 @@ class InstituteProfile( PaginationMixin,TemplateView):
         return render_to_response("instituteinfo/institute_profile.html",locals(),context_instance = RequestContext(self.request))
 
 def extract_logo_path(user):
-    image_path = ExtraDetails.objects.filter( appldetail = user).values('photo')
-    if image_path:
-        image_path = image_path[0]
+    image_path = ImageInfo.objects.filter( user = user).values('photo')
     return image_path
 
 
@@ -83,7 +79,7 @@ def delete_post(request, id):
 class EditImage(TemplateView):
     template_name = 'instituteinfo/crop_image.html'
     def get_context_data(self, **kwargs):
-        form = ExtraDetailsForm()
+        form = ImagesInfoForm()
         return locals()
 
 
@@ -93,7 +89,7 @@ def ajax_save_images( request ):
 
         img_crop_dict = copy.deepcopy( eval( request.POST['crop_dictionary'] ) )
         for file_key, file_val in request.FILES.items():
-            extra_details = ExtraDetails.objects.filter( appldetail = request.user, type = file_key )
+            extra_details = ImageInfo.objects.filter( user = request.user, type = file_key )
 
             if  len( extra_details ) <= 0:
                 file_val.name = str( request.user.id ) + '_' + file_key + '.' + file_val.name.split( '.' )[-1]
@@ -216,7 +212,7 @@ def students_connected_to_institute(request):
 
     institute = InstitueInfo.objects.get(user = request.user)
     connected_students_ids = StudentInfo.objects.filter(institute = institute, status = 'Verified', profile = True).values_list('user_id',flat=True)
-    students = ExtraDetails.objects.filter(appldetail__id__in = connected_students_ids).values('photo','appldetail__first_name','appldetail__last_name')
+    students = ImageInfo.objects.filter(user__id__in = connected_students_ids).values('photo','user__first_name','user__last_name')
     return  render_to_response('instituteinfo/mystudents.html', locals(), context_instance = RequestContext(request))
 
 
@@ -261,12 +257,12 @@ def delete_csv(request):
 def extract_student_info(institute):
     students = StudentInfo.objects.filter(institute=institute,status='Verified').values('user_id','user__username').order_by('?')[:4]
     user_ids = [student['user_id'] for student in students]
-    image_info = ExtraDetails.objects.filter( appldetail__id__in = user_ids).values('photo','appldetail__first_name')
+    image_info = ImageInfo.objects.filter( user__id__in = user_ids).values('photo','user__first_name')
     return image_info
 
 
 def extract_faculty_info(institute):
     faculties = FacultyInfo.objects.filter(institute=institute).values('user_id','user__username').order_by('?')[:4]
     user_ids = [faculty['user_id'] for faculty in faculties]
-    image_info = ExtraDetails.objects.filter( appldetail__id__in = user_ids).values('photo','appldetail__first_name')
+    image_info = ImageInfo.objects.filter( user__id__in = user_ids).values('photo','user__first_name')
     return image_info
