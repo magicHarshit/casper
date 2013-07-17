@@ -5,6 +5,7 @@ from InstituteInfo.models import InstitueInfo
 from studentinfo.models import StudentInfo
 from studentinfo.choices import STATUS_CHOICES
 from master.models import ImageInfo
+from django.db.models.signals import post_save
 
 
 class FacultyInfo(models.Model):
@@ -19,7 +20,7 @@ class FacultyInfo(models.Model):
     qualification = models.CharField(max_length = 100)
     work_experience = models.CharField(max_length = 100)
     rating = models.FloatField(default= 0)
-    # image = models.ManyToManyField( ImageInfo, through='FacultyImages' )
+    image = models.ManyToManyField( ImageInfo, through='FacultyImages' )
     connections = models.ManyToManyField( StudentInfo, through='FacultyConnections' )
 
     def __unicode__(self):
@@ -35,10 +36,12 @@ class FacultyConnections(models.Model):
 
 
 
-# class FacultyImages(models.Model):
-#     institute = models.ForeignKey(InstitueInfo)
-#     image = models.ForeignKey(ImageInfo)
-#
-#     def __unicode__(self):
-#         return self.institute + '-' +  self.image
+class FacultyImages(models.Model):
+    faculty = models.ForeignKey(FacultyInfo)
+    image = models.ForeignKey(ImageInfo)
 
+    def __unicode__(self):
+        return self.institute + '-' +  self.image
+
+from facultyinfo.signals import post_save_default_image
+post_save.connect(post_save_default_image, sender= FacultyInfo)

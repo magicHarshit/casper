@@ -89,5 +89,5 @@ class ProfileSubmission(TemplateView):
         elif 'Student' in self.request.user.groups.values_list('name',flat = True):
             return HttpResponseRedirect(reverse('student_inbox'))
         elif 'Faculty' in self.request.user.groups.values_list('name',flat = True):
-            # return HttpResponseRedirect(reverse('student_inbox'))
+            # return HttpResponseRedirect(reverse('faculty_detail'))
             return HttpResponse('Testing....')#todo

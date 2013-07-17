@@ -6,30 +6,34 @@
     <ignored path=".idea/workspace.xml" />
     <file path="$PROJECT_DIR$/../../../tripvillas/tripvillas/booking/tests/managed_booking.py" changelist="0de07f2e-3967-4ccd-bced-d7535d60ca03" time="1372685611410" ignored="false" />
     <file path="/managed_booking.py" changelist="0de07f2e-3967-4ccd-bced-d7535d60ca03" time="1372685446552" ignored="false" />
-    <file path="/a.dummy" changelist="0de07f2e-3967-4ccd-bced-d7535d60ca03" time="1373643437808" ignored="false" />
-    <file path="/models.py" changelist="0de07f2e-3967-4ccd-bced-d7535d60ca03" time="1373658264339" ignored="false" />
+    <file path="/a.dummy" changelist="0de07f2e-3967-4ccd-bced-d7535d60ca03" time="1373724794966" ignored="false" />
+    <file path="/models.py" changelist="0de07f2e-3967-4ccd-bced-d7535d60ca03" time="1373725833498" ignored="false" />
     <file path="/crop.py" changelist="0de07f2e-3967-4ccd-bced-d7535d60ca03" time="1372770155107" ignored="false" />
-    <file path="/views.py" changelist="0de07f2e-3967-4ccd-bced-d7535d60ca03" time="1373667344393" ignored="false" />
+    <file path="/views.py" changelist="0de07f2e-3967-4ccd-bced-d7535d60ca03" time="1373741490830" ignored="false" />
     <file path="/urls.py" changelist="0de07f2e-3967-4ccd-bced-d7535d60ca03" time="1373656367641" ignored="false" />
     <file path="/settings.py" changelist="0de07f2e-3967-4ccd-bced-d7535d60ca03" time="1373478030464" ignored="false" />
-    <file path="/institute_profile.html" changelist="0de07f2e-3967-4ccd-bced-d7535d60ca03" time="1373666964419" ignored="false" />
-    <file path="/profile_submission.html" changelist="0de07f2e-3967-4ccd-bced-d7535d60ca03" time="1373653149541" ignored="false" />
-    <file path="/profile.py" changelist="0de07f2e-3967-4ccd-bced-d7535d60ca03" time="1373645002909" ignored="false" />
-    <file path="/forms.py" changelist="0de07f2e-3967-4ccd-bced-d7535d60ca03" time="1373656296733" ignored="false" />
-    <file path="/header.html" changelist="0de07f2e-3967-4ccd-bced-d7535d60ca03" time="1372876920863" ignored="false" />
-    <file path="/myfaculty.html" changelist="0de07f2e-3967-4ccd-bced-d7535d60ca03" time="1373313587182" ignored="false" />
-    <file path="/faculty.html" changelist="0de07f2e-3967-4ccd-bced-d7535d60ca03" time="1373135814907" ignored="false" />
+    <file path="/institute_profile.html" changelist="0de07f2e-3967-4ccd-bced-d7535d60ca03" time="1373730445287" ignored="false" />
+    <file path="/profile_submission.html" changelist="0de07f2e-3967-4ccd-bced-d7535d60ca03" time="1373742560550" ignored="false" />
+    <file path="/profile.py" changelist="0de07f2e-3967-4ccd-bced-d7535d60ca03" time="1373724963033" ignored="false" />
+    <file path="/forms.py" changelist="0de07f2e-3967-4ccd-bced-d7535d60ca03" time="1373725963542" ignored="false" />
+    <file path="/header.html" changelist="0de07f2e-3967-4ccd-bced-d7535d60ca03" time="1373723994618" ignored="false" />
+    <file path="/myfaculty.html" changelist="0de07f2e-3967-4ccd-bced-d7535d60ca03" time="1373741591450" ignored="false" />
+    <file path="/faculty.html" changelist="0de07f2e-3967-4ccd-bced-d7535d60ca03" time="1373914450525" ignored="false" />
     <file path="/groups.py" changelist="0de07f2e-3967-4ccd-bced-d7535d60ca03" time="1372967040582" ignored="false" />
-    <file path="/inbox.html" changelist="0de07f2e-3967-4ccd-bced-d7535d60ca03" time="1373062469147" ignored="false" />
-    <file path="/homepage.css" changelist="0de07f2e-3967-4ccd-bced-d7535d60ca03" time="1373663113317" ignored="false" />
+    <file path="/inbox.html" changelist="0de07f2e-3967-4ccd-bced-d7535d60ca03" time="1373705430088" ignored="false" />
+    <file path="/homepage.css" changelist="0de07f2e-3967-4ccd-bced-d7535d60ca03" time="1373998961296" ignored="false" />
     <file path="/layout_base_3_rows.html" changelist="0de07f2e-3967-4ccd-bced-d7535d60ca03" time="1373132664798" ignored="false" />
     <file path="/mystudents.html" changelist="0de07f2e-3967-4ccd-bced-d7535d60ca03" time="1373388099685" ignored="false" />
-    <file path="/signals.py" changelist="0de07f2e-3967-4ccd-bced-d7535d60ca03" time="1373650902155" ignored="false" />
+    <file path="/signals.py" changelist="0de07f2e-3967-4ccd-bced-d7535d60ca03" time="1373725612925" ignored="false" />
     <file path="/choices.py" changelist="0de07f2e-3967-4ccd-bced-d7535d60ca03" time="1373396104024" ignored="false" />
     <file path="/0003_default_group.py" changelist="0de07f2e-3967-4ccd-bced-d7535d60ca03" time="1373482770433" ignored="false" />
     <file path="/0003_create_default_group.py" changelist="0de07f2e-3967-4ccd-bced-d7535d60ca03" time="1373485142679" ignored="false" />
     <file path="/0004_create_user_groups.py" changelist="0de07f2e-3967-4ccd-bced-d7535d60ca03" time="1373485691187" ignored="false" />
     <file path="/static_group_listing.html" changelist="0de07f2e-3967-4ccd-bced-d7535d60ca03" time="1373663951352" ignored="false" />
+    <file path="/static_group_config.html" changelist="0de07f2e-3967-4ccd-bced-d7535d60ca03" time="1373700715532" ignored="false" />
+    <file path="/index.html" changelist="0de07f2e-3967-4ccd-bced-d7535d60ca03" time="1373998305718" ignored="false" />
+    <file path="$PROJECT_DIR$/../../../tripvillas/tripvillas/booking/features/regular_booking.feature" changelist="0de07f2e-3967-4ccd-bced-d7535d60ca03" time="1374043172607" ignored="false" />
+    <file path="$PROJECT_DIR$/../../../tripvillas/tripvillas/booking/features/external_booking.feature" changelist="0de07f2e-3967-4ccd-bced-d7535d60ca03" time="1374043172607" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,43 +58,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="views.py" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/InstituteInfo/views.py">
+      <file leaf-file-name="homepage.css" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/static/default/media/style/homepage.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="91" column="58" selection-start="3831" selection-end="3831" vertical-scroll-proportion="0.5916955">
-              <folding>
-                <element signature="e#0#56#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="crop_image.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/instituteinfo/crop_image.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="13" selection-start="971" selection-end="971" vertical-scroll-proportion="-10.0">
+            <state line="18" column="20" selection-start="505" selection-end="505" vertical-scroll-proportion="0.48214287">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="institute_profile.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/instituteinfo/institute_profile.html">
+      <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/userapp/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="38" selection-start="698" selection-end="698" vertical-scroll-proportion="-10.625">
+            <state line="31" column="28" selection-start="1033" selection-end="1033" vertical-scroll-proportion="-8.145454">
               <folding>
-                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#img#0;n#div#2;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#2;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#form#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#form#1;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#form#2;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#1;n#form#2;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#textarea#0;n#div#0;n#div#1;n#form#2;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#input#0;n#div#2;n#form#2;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#3;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#a#0;n#div#0;n#div#3;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -106,22 +88,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/userapp/migrations/0003_create_default_group.py" />
-        <option value="$PROJECT_DIR$/userapp/migrations/0004_create_user_groups.py" />
-        <option value="$PROJECT_DIR$/InstituteInfo/forms.py" />
-        <option value="$PROJECT_DIR$/InstituteInfo/signals.py" />
+        <option value="$PROJECT_DIR$/templates/instituteinfo/pagination.html" />
+        <option value="$PROJECT_DIR$/templates/shared/header.html" />
         <option value="$PROJECT_DIR$/userapp/profile.py" />
-        <option value="$PROJECT_DIR$/templates/userapp/profile_submission.html" />
-        <option value="$PROJECT_DIR$/group_config/forms.py" />
-        <option value="$PROJECT_DIR$/group_config/urls.py" />
-        <option value="$PROJECT_DIR$/InstituteInfo/models.py" />
-        <option value="$PROJECT_DIR$/templates/layouts/layout_base_3_rows.html" />
-        <option value="$PROJECT_DIR$/static/default/media/style/homepage.css" />
-        <option value="$PROJECT_DIR$/templates/group_config/static_group_listing.html" />
-        <option value="$PROJECT_DIR$/group_config/views.py" />
+        <option value="$PROJECT_DIR$/facultyinfo/models.py" />
+        <option value="$PROJECT_DIR$/master/models.py" />
+        <option value="$PROJECT_DIR$/facultyinfo/migrations/0002_auto__add_facultyimages.py" />
+        <option value="$PROJECT_DIR$/facultyinfo/forms.py" />
+        <option value="$PROJECT_DIR$/facultyinfo/signals.py" />
         <option value="$PROJECT_DIR$/facultyinfo/views.py" />
+        <option value="$PROJECT_DIR$/templates/instituteinfo/myfaculty.html" />
+        <option value="$PROJECT_DIR$/templates/userapp/profile_submission.html" />
+        <option value="$PROJECT_DIR$/templates/group_config/static_group_listing.html" />
         <option value="$PROJECT_DIR$/templates/instituteinfo/institute_profile.html" />
-        <option value="$PROJECT_DIR$/InstituteInfo/views.py" />
+        <option value="$PROJECT_DIR$/templates/facultyinfo/faculty.html" />
+        <option value="$PROJECT_DIR$/templates/userapp/index.html" />
+        <option value="$PROJECT_DIR$/static/default/media/style/homepage.css" />
       </list>
     </option>
   </component>
@@ -176,38 +158,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="openshift" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="openshift" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="templates" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="openshift" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="openshift" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="templates" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="instituteinfo" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
     </panes>
@@ -215,12 +165,12 @@
   <component name="PropertiesComponent">
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="options.lastSelected" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
     <property name="recentsLimit" value="5" />
+    <property name="options.lastSelected" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../tripvillas/tripvillas" />
     <property name="DefaultHtmlFileTemplate" value="Html5" />
-    <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="PyConsoleOptionsProvider">
     <option name="myPythonConsoleState">
@@ -363,6 +313,23 @@
     </recent_temporary>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="SvnConfiguration" maxAnnotateRevisions="500" myUseAcceleration="nothing" myAutoUpdateAfterCommit="false" cleanupOnStartRun="false" SSL_PROTOCOLS="all">
+    <option name="USER" value="" />
+    <option name="PASSWORD" value="" />
+    <option name="mySSHConnectionTimeout" value="30000" />
+    <option name="mySSHReadTimeout" value="30000" />
+    <option name="LAST_MERGED_REVISION" />
+    <option name="MERGE_DRY_RUN" value="false" />
+    <option name="MERGE_DIFF_USE_ANCESTRY" value="true" />
+    <option name="UPDATE_LOCK_ON_DEMAND" value="false" />
+    <option name="IGNORE_SPACES_IN_MERGE" value="false" />
+    <option name="CHECK_NESTED_FOR_QUICK_MERGE" value="false" />
+    <option name="IGNORE_SPACES_IN_ANNOTATE" value="true" />
+    <option name="SHOW_MERGE_SOURCES_IN_ANNOTATE" value="true" />
+    <option name="FORCE_UPDATE" value="false" />
+    <option name="IGNORE_EXTERNALS" value="false" />
+    <myIsUseDefaultProxy>false</myIsUseDefaultProxy>
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="0de07f2e-3967-4ccd-bced-d7535d60ca03" name="Default" comment="" />
@@ -377,10 +344,9 @@
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32850242" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32933652" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3541167" sideWeight="0.6714976" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.35011992" sideWeight="0.6714976" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -389,6 +355,7 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32850242" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -457,145 +424,105 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/group_config/models.py">
+    <entry file="file://$PROJECT_DIR$/userapp/profile.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
-        </state>
+        <state line="92" column="51" selection-start="4390" selection-end="4390" vertical-scroll-proportion="0.87024224" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/group_config/forms.py">
+    <entry file="file://$PROJECT_DIR$/InstituteInfo/signals.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="25" selection-start="210" selection-end="210" vertical-scroll-proportion="0.27918783">
+        <state line="14" column="0" selection-start="525" selection-end="946" vertical-scroll-proportion="0.35532996" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/facultyinfo/migrations/0002_auto__add_facultyimages.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="12" selection-start="865" selection-end="865" vertical-scroll-proportion="0.5968858" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/facultyinfo/signals.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="33" selection-start="321" selection-end="321" vertical-scroll-proportion="0.17766498" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/facultyinfo/forms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="74" selection-start="241" selection-end="241" vertical-scroll-proportion="0.2284264" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/facultyinfo/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="48" selection-start="352" selection-end="352" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/group_config/group_config.html">
+    <entry file="file://$PROJECT_DIR$/master/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="28" column="6" selection-start="840" selection-end="840" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/group_config/static_group_config.html">
+    <entry file="file://$PROJECT_DIR$/facultyinfo/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/InstituteInfo/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="32" selection-start="842" selection-end="842" vertical-scroll-proportion="0.51766783">
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/group_config/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="44" selection-start="527" selection-end="527" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#24#76#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/layouts/layout_base_3_rows.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="33" selection-start="1768" selection-end="1768" vertical-scroll-proportion="0.8015123">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/layouts/layout_base_2_columns.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="22" selection-start="22" selection-end="22" vertical-scroll-proportion="-0.0">
-          <folding />
-        </state>
+        <state line="22" column="40" selection-start="905" selection-end="905" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/instituteinfo/myfaculty.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="12" selection-start="277" selection-end="320" vertical-scroll-proportion="0.2166065">
-          <folding>
-            <element signature="n#style#0;n#div#1;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/default/media/style/homepage.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="62" column="12" selection-start="1649" selection-end="1649" vertical-scroll-proportion="0.0">
+        <state line="12" column="113" selection-start="577" selection-end="577" vertical-scroll-proportion="0.25812274">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/group_config/static_group_listing.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="24" selection-start="838" selection-end="838" vertical-scroll-proportion="0.58201057">
-          <folding>
-            <element signature="e#350#380#0" expanded="true" />
-            <element signature="e#412#452#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/facultyinfo/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="0" selection-start="1748" selection-end="1748" vertical-scroll-proportion="0.4550173">
+        <state line="47" column="32" selection-start="2573" selection-end="2573" vertical-scroll-proportion="0.89619374">
           <folding>
             <element signature="e#0#50#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/group_config/views.py">
+    <entry file="file://$PROJECT_DIR$/templates/userapp/profile_submission.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="55" column="0" selection-start="2173" selection-end="2173" vertical-scroll-proportion="0.8442907">
-          <folding>
-            <element signature="e#23#79#0" expanded="true" />
-          </folding>
+        <state line="8" column="96" selection-start="388" selection-end="388" vertical-scroll-proportion="0.2166065">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/group_config/static_group_listing.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="35" column="0" selection-start="1387" selection-end="1387" vertical-scroll-proportion="0.027075812">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/facultyinfo/faculty.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="121" column="5" selection-start="4794" selection-end="4794" vertical-scroll-proportion="0.5144404">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/instituteinfo/institute_profile.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="38" selection-start="698" selection-end="698" vertical-scroll-proportion="-10.625">
-          <folding>
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#img#0;n#div#2;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#2;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#form#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#form#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#form#2;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#1;n#form#2;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#textarea#0;n#div#0;n#div#1;n#form#2;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#div#2;n#form#2;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#3;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#0;n#div#0;n#div#3;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/instituteinfo/crop_image.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="13" selection-start="971" selection-end="971" vertical-scroll-proportion="-10.0">
+        <state line="98" column="18" selection-start="4146" selection-end="4146" vertical-scroll-proportion="0.13537906">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/InstituteInfo/views.py">
+    <entry file="file://$PROJECT_DIR$/templates/userapp/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="91" column="58" selection-start="3831" selection-end="3831" vertical-scroll-proportion="0.5916955">
+        <state line="31" column="28" selection-start="1033" selection-end="1033" vertical-scroll-proportion="-8.145454">
           <folding>
-            <element signature="e#0#56#0" expanded="true" />
+            <element signature="n#style#0;n#div#3;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/default/media/style/homepage.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="20" selection-start="505" selection-end="505" vertical-scroll-proportion="0.48214287">
+          <folding />
         </state>
       </provider>
     </entry>

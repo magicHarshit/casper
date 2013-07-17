@@ -6,8 +6,9 @@ from django.shortcuts import render_to_response
 from InstituteInfo.forms import WallPostForm
 from studentinfo.models import StudentInfo
 from InstituteInfo.models import *
-from models import FacultyInfo,FacultyConnections
+from facultyinfo.models import FacultyInfo,FacultyConnections
 from InstituteInfo.views import extract_logo_path
+from group_config.models import UserGroup
 
 class FacultyDetail( TemplateView):
     template_name = 'facultyinfo/faculty.html'
@@ -19,7 +20,7 @@ class FacultyDetail( TemplateView):
         all_wall_posts = WallPost.objects.filter(user__username = username).values('wall_post','id','date_posted','group__name','group__id').order_by('-id')
         faculty_obj = FacultyInfo.objects.get(user__username = username)
         institute = faculty_obj.institute
-        groups = UserGroup.objects.filter(institute= institute).values('name','id')
+        groups = UserGroup.objects.filter(owner= institute).values('name','id')
         if 'Student' in self.request.user.groups.values_list('name',flat=True):
             connected = FacultyConnections.objects.filter(student__user=self.request.user,faculty=faculty_obj).count()
         image_path = extract_logo_path(self.request.user)
@@ -41,8 +42,9 @@ def faculty_connected_to_institute(request):
         institute = InstitueInfo.objects.get(user = request.user)
     else:
         institute = StudentInfo.objects.get(user=request.user).institute
-    connected_faculties_id = FacultyInfo.objects.filter(institute = institute,profile = True).values_list('id',flat=True)
-    faculties = ImageInfo.objects.filter(user__id__in = connected_faculties_id).values('photo','user__first_name','user__last_name')
+    faculties = FacultyInfo.objects.filter(institute = institute,profile = True).values('image__photo','user__first_name','user__last_name')
+    # faculties = ImageInfo.objects.filter(user__id__in = connected_faculties_id).values('photo','user__first_name','user__last_name')
+    # import pdb;pdb.set_trace()
     return  render_to_response('instituteinfo/myfaculty.html', locals(), context_instance = RequestContext(request))
 
 def follow_faculty(request,*args,**kwargs):

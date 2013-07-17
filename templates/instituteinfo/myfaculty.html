@@ -9,13 +9,11 @@
             <div style="margin: 255px 188px 0px 220px">
             {% for faculty in faculties %}
                     <div class="listingFaculty">
-
-
                         <div class="studentImage">
-                            <img  src ="{{ MEDIA_URL }}{{ faculty.photo }}" height="100%" width="100%">
+                            <img  src ="{{ MEDIA_URL }}{{ faculty.image__photo }}" style="height:100%;width:100%">
                          </div>
                         <div class="facultyName">
-                         {{ faculty.appldetail__first_name }}{{ appldetail__last_name }}
+                         {{ faculty.user__first_name }}{{ faculty.user__last_name }}
                         </div>
 
                         {% if group_type == 'Institute' %}

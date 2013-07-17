@@ -2,10 +2,11 @@
 
 {% block A_1 %}
 
-    <div style='height: 0px;width:0px; overflow:hidden'>
-    <input id="upfile"  type="file">
-    </div>
-
+    <form style='height: 0px;width:0px; overflow:hidden;' enctype="multipart/form-data" method="post" class="form-horizontal"> {% csrf_token %}
+    <label class="control-label" for="id_photo"></label>
+        <input id="upfile"  type="file" name="photo">
+    <input type="hidden" value="{}" name="crop_dictionary" id="id_cropdict">
+    </form>
 
     <div style =" border-style: solid;border-width: 1px;left: 123px;position: absolute;right: 123px;top: 0">
     <img  src ="{{ MEDIA_URL }}uploads/student_signature/5/personal2.jpg">
@@ -14,10 +15,10 @@
     <div class ="logo">
         <img  src ="{{ MEDIA_URL }}{{ image_path.0.photo }}" style="height:100%;width:100%">
         <div id = 'editImage' style="margin-top: -20px;display: none;" >
-{#          <strong><div style= "cursor:pointer;" onclick="getFile()">Edit Image</div></strong>#}
-        <a href="{% url edit_image %}">Edit Image</a></strong>
+          <strong><div style= "cursor:pointer;" onclick="getFile()">Edit Image</div></strong>
         </div>
     </div>
+
 
     <form class="formStudents">
         <div class="modal-header">
@@ -42,9 +43,9 @@
         <div class="modal-body">
             {% for faculty_image in  faculty_images %}
                 <div class="studentImage">
-                    <img  src ="{{ MEDIA_URL }}{{ faculty_image.photo }}" height="100%" width="100%">
+                    <img  src ="{{ MEDIA_URL }}{{ faculty_image.photo }}" style="height:100%;width:100%">
                     <div id = 'editImage' style="margin-top: -20px">
-                        {{ faculty_image.appldetail__first_name }}
+                        {{ faculty_image.user__first_name }}
                     </div>
                 </div>
             {% endfor %}
@@ -91,9 +92,10 @@
             <input class="btn btn-primary" type="submit" style="float: right" value ="Post My Bulletin"></button>
         </div>
     </form>
-
+    <div class="clear"></div>
+    <div class="wallPostDiv">
     {%  for wall_post in all_wall_posts  %}
-        <div class="form-inline" style="width: 489px ;margin-top:-6px">
+        <div class="wallPost" >
             <div class="modal-header">
                 {{wall_post.date_posted}} Posted By:{{ wall_post.user__username }}
                 <select id ="wallGroup" select class="wallGroups">
@@ -110,10 +112,11 @@
                 </select>
                 <a class="icon-trash"  style="float: right" href ="{% url delete_post wall_post.id %}"></a>
             </div>
-            <br>
             {{ wall_post.wall_post }}
         </div>
     {%  endfor  %}
+    </div>
+
 <script type="text/javascript">
     function changeGroup(group_id,wall_id)
     {
@@ -124,10 +127,10 @@
         $(".icon-trash").hide()
         $(".wallGroups").hide()
     });
-        $(".form-inline").hover(function(){
+        $(".wallPost").hover(function(){
             $(this).find(".icon-trash").show()
             $(this).find(".wallGroups").show()
-            $(".form-inline").mouseleave(function(){
+            $(".wallPost").mouseleave(function(){
                 $(".icon-trash").hide()
                 $(".wallGroups").hide()
             })

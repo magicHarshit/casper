@@ -2,25 +2,41 @@
 
 {% block A_1 %}
 
-<form action="{% url static_group_config %}" method="post">{% csrf_token %}
-{#<form action="{% url static_group_config %}" class ="form-group" method="post"> {% csrf_token %}#}
+    <div class="form-signin">
+        <div class ="registerInside">
+            <a href="#addGroupModal" role="button" class="btn btn-primary" data-toggle="modal">Add Group</a>
+        </div>
+    </div>
 
+<div id="addGroupModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="width: 275px; margin-left:-154px">
+ <form action="{% url static_group_config %}" method="post">{% csrf_token %}
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h2 id="addGroupModalLabel">Group Creation</h2>
+        </div>
 
-    {% for each_field in form.visible_fields %}
-    {%  if each_field.errors %}
-        {{ each_field.errors }}
-    {% endif %}
-{#    {% if each_field.name == 'description' %}#}
-{#        {{ each_field.label }}#}
-{#        <textarea id="id_description" name="description" cols="18" rows="5"></textarea>#}
-{#    {% else %}#}
-        {{ each_field.label }}
-        {{ each_field }}
-{#    {% endif %}#}
-    {% endfor %}
+        <div class="modal-body">
+            {% for each_field in form.visible_fields %}
+            <div class="control-group">
+                <div class="controls">
+                    {%  if each_field.errors %}
+                    {{ each_field.errors }}
+                    {% endif %}
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+                            <li><a tabindex="-1" href="#">Action</a></li>
+                            <li><a tabindex="-1" href="#">Another action</a></li>
+                        </ul>
+                        {{each_field}}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
 
-    <input class="btn btn-primary" type="submit" value ="Add to My Group"></button>
-</form>
+        <div class="modal-footer">
+            <input class="btn btn-primary" type="submit" value ="Add to my Group"></button>
+        </div>
+    </form>
+</div>
 
 {% endblock A_1 %}
 

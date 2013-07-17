@@ -30,5 +30,38 @@
             <div class="clear"></div>
         {% endfor %}
     </div>
-<a  class="btn btn-primary groupListButton" href ="{% url static_group_config %}"> Add Group To List </a>
+
+
+{#<a class="btn btn-primary groupListButton" href="#addGroupModal" role="button" class="btn btn-primary" data-toggle="modal">Add Group</a>#}
+
+<div id="addGroupModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="width: 275px; margin-left:-154px">
+ <form action="{% url static_group_config %}" method="post">{% csrf_token %}
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h2 id="addGroupModalLabel">Group Creation</h2>
+        </div>
+
+        <div class="modal-body">
+            {% for each_field in form.visible_fields %}
+            <div class="control-group">
+                <div class="controls">
+                    {%  if each_field.errors %}
+                    {{ each_field.errors }}
+                    {% endif %}
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+                            <li><a tabindex="-1" href="#">Action</a></li>
+                            <li><a tabindex="-1" href="#">Another action</a></li>
+                        </ul>
+                        {{each_field}}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="modal-footer">
+            <input class="btn btn-primary" type="submit" value ="Add to my Group"></button>
+        </div>
+    </form>
+</div>
+
 {% endblock A_1 %}

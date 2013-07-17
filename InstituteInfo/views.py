@@ -89,11 +89,11 @@ def ajax_save_images( request ):
 
         img_crop_dict = copy.deepcopy( eval( request.POST['crop_dictionary'] ) )
         for file_key, file_val in request.FILES.items():
-            extra_details = ImageInfo.objects.filter( user = request.user, type = file_key )
+            extra_details = ImageInfo.objects.filter( user = request.user, type = 'Profile' )
 
             if  len( extra_details ) <= 0:
                 file_val.name = str( request.user.id ) + '_' + file_key + '.' + file_val.name.split( '.' )[-1]
-                extra_details = ExtraDetails( appldetail = request.user, type = file_key, photo = file_val )
+                extra_details = ImageInfo( user = request.user, type = 'Profile', photo = file_val )
                 extra_details.save()
             else:
                 extra_details = extra_details[0]
@@ -109,10 +109,10 @@ def ajax_save_images( request ):
                 file_val.name = new_pic_name
                 extra_details.photo = file_val
                 extra_details.save()
-
-            if img_crop_dict.has_key( 'id_' + file_key ):
-                crop_dict = img_crop_dict['id_' + file_key]
+            if img_crop_dict.has_key( 'upfile'):
+                crop_dict = img_crop_dict['upfile']
                 crop_dict['image_name'] = extra_details.photo.name
+
                 path = crop_image( crop_dict )
                 extra_details.photo.name = path
                 extra_details.save()

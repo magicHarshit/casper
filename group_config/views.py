@@ -33,7 +33,7 @@ def get_group_listing(request):
     institute = InstitueInfo.objects.get(user = request.user)
     image_path = extract_logo_path(request.user)
     groups = UserGroup.objects.filter(owner = institute)
-
+    form = GroupConfigurationForm()
     return render_to_response('group_config/static_group_listing.html', locals(), context_instance = RequestContext(request))
 
 def delete_group(request,*kwargs):

@@ -6,9 +6,8 @@
     <img src="{{ STATIC_URL }}default/media/images/casper2.jpg " width="656" >
 
 </div>
-<div class="clear"></div>
-<!--<div class ="container">-->
-    <form class="form-inline" action="/" method="post">{% csrf_token %}
+<div class ="login">
+    <form class="login-class" action="/" method="post">{% csrf_token %}
         <h2 class="form-horizontal-heading">Please Login</h2>
         <div class="control-group">
             <div class="controls">
@@ -29,12 +28,8 @@
         </div>
         <input class="btn btn-primary" type="submit" value ="Login"></button>
     </form>
-<!--</div>-->
-<div class="clear"></div>
-
-
-
-    <div class="form-signin">
+</div>
+    <div class="form-signin2">
         <div class ="registerInside">
             <a href="#mySignupModal" role="button" class="btn btn-primary" data-toggle="modal">Registered User.SignUp Here</a>
         </div>

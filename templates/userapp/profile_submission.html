@@ -7,12 +7,9 @@
 
     <div class ="logo">
         <img  src ="{{ MEDIA_URL }}{{ image_path.0.photo }}" style="width: 100%;height: 100%">
-        {% if group_type == 'Institute' %}
-            <strong><a href="{% url edit_image %}">Edit Image</a></strong>
-        {% endif %}
     </div>
 
-        <form class="form-inline" enctype="multipart/form-data" method="post"> {% csrf_token %}
+        <form class="form-profileSub" enctype="multipart/form-data" method="post"> {% csrf_token %}
             <h2><strong>Your Profile Information</strong></h2>
             {% for each_field in form.visible_fields %}
                 <div class="control-group">

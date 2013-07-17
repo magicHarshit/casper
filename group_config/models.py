@@ -4,7 +4,7 @@ from django.utils.encoding import smart_str
 
 
 class UserGroup( models.Model):
-    name = models.CharField(max_length = 100)
+    name = models.CharField(max_length = 100,)
     description = models.TextField()
     owner = models.ForeignKey(InstitueInfo,blank=True,null=True)
 

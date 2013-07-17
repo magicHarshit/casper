@@ -4,7 +4,7 @@ __author__ = 'harshit'
 from django.db import models
 from django.contrib.auth.models import User
 import datetime
-from choices import IMAGE_TYPE
+from master.choices import IMAGE_TYPE
 
 
 class BasicCofigurationFields( models.Model ):
@@ -34,4 +34,4 @@ class ImageInfo( models.Model ):
     objects = models.Manager()
 
     def __unicode__(self):
-        return self.user + '-' + self.type
+        return str(self.user) + '-' + str(self.type)
