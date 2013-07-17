@@ -28,21 +28,26 @@ from django.core.mail import EmailMultiAlternatives
 from django.conf import settings
 from facultyinfo.models import FacultyInfo
 from group_config.models import UserGroup
-
+from django.utils.decorators import method_decorator
+from endless_pagination.decorators import page_template
 
 
 class PaginationMixin(object):
+    # @method_decorator(page_template('instituteinfo/pagination.html'))
     def dispatch(self, request, *args, **kwargs):
         return super(PaginationMixin, self).dispatch(request, *args, **kwargs)
-
 
 class InstituteProfile( PaginationMixin,TemplateView):
     template_name = 'instituteinfo/institute_profile.html'
 
-    def get_context_data(self, **kwargs):
+    def get_context_data(self,extra_context=None, **kwargs):
         wall_post = WallPostForm()
-
         all_wall_posts = WallPost.objects.filter(user = self.request.user).values('wall_post','id','date_posted','group__name','group__id','user__username').order_by('-id')
+
+        page_template='instituteinfo/pagination.html'
+        if self.request.is_ajax():
+            self.template_name=page_template
+
         institute = InstitueInfo.objects.get(user = self.request.user)
         image_path = extract_logo_path(self.request.user)
         students = StudentInfo.objects.filter(institute = institute, status = 'Pending').values('user')
@@ -54,7 +59,7 @@ class InstituteProfile( PaginationMixin,TemplateView):
         return locals()
 
     def post(self, *args, **kwargs):
-        wall_post = WallPostForm(data =    self.request.POST)
+        wall_post = WallPostForm(data = self.request.POST)
         if wall_post.is_valid():
             wall_post_obj = wall_post.save(commit= False)
             wall_post_obj.user = self.request.user

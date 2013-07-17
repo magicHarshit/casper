@@ -92,7 +92,6 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.humanize',
     'django.contrib.sitemaps',
-    'tinymce',
     'group_config',
     'InstituteInfo',
     'master',
@@ -100,6 +99,7 @@ INSTALLED_APPS = (
     'userapp',
     'facultyinfo',
     'custom_context_processor',
+    'endless_pagination',
     'south',
     )
 
@@ -117,12 +117,6 @@ CELERY_ALWAYS_EAGER = True
 STATICFILES_DIRS = (
     '/home/harshit/workspace/code/casper2/wsgi/openshift/static/',
     )
-
-TINYMCE_COMPRESSOR = True
-TINYMCE_SPELLCHECKER = False
-TINYMCE_JS_ROOT = os.path.join(STATIC_ROOT, 'default/media/js/tinymce/')
-
-
 #delayed notifications, time in seconds, 15 mins by default
 NOTIFICATION_DELAY_TIME = 60 * 15
 
