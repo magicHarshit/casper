@@ -1,7 +1,7 @@
 from django.db import models
 import datetime
 from master.models import BasicCofigurationFields,ImageInfo
-from InstituteInfo.choices import LIST_YEAR,INSTITUTE_TYPE
+from InstituteInfo.choices import LIST_YEAR,INSTITUTE_TYPE,USER_TYPE
 # from group_config.models import UserGroup
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
@@ -35,7 +35,7 @@ class InstituteImages(models.Model):
 
 class WallPost(models.Model):
     user = models.ForeignKey(User)
-    group = models.ForeignKey('group_config.UserGroup')#todo urgent harshit,change it later but asap
+    group = models.ForeignKey('group_config.UserGroup')#todo
     wall_post = models.TextField()
     date_posted = models.DateTimeField(default=datetime.datetime.now(), null= True)
 
@@ -46,6 +46,7 @@ class WallPost(models.Model):
 class CsvInfo(models.Model):
     institute = models.ForeignKey( InstitueInfo )
     group = models.ForeignKey ( 'group_config.UserGroup' )
+    type = models.CharField(max_length = 100,choices=USER_TYPE)
     file_upload = models.FileField( upload_to = file_path)
     objects = models.Manager()
 

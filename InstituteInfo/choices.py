@@ -22,3 +22,6 @@ INSTITUTE_USER=(('Chairman','Chairman'),
                 ('Form user','Form user'),
     )
 
+USER_TYPE=(('Faculty','Faculty'),
+            ('Student','Student'),
+    )

@@ -16,7 +16,7 @@ from studentinfo.models import StudentInfo
 from InstituteInfo.models import WallPost, InstitueInfo
 from django.views.static import serve
 from InstituteInfo.views import extract_logo_path
-from facultyinfo.models import FacultyConnections
+from facultyinfo.models import FacultyConnections,FacultyInfo
 from django.db.models import Q
 
 
@@ -42,12 +42,21 @@ class StudentInbox(TemplateView):
             message = 'Your request is rejected by institute'
             return locals()
         student_instance = StudentInfo.objects.get(user = self.request.user, status = 'Verified')
+
         institute = student_instance.institute
         connected_faculty_user = FacultyConnections.objects.filter(student= student_instance).values_list('faculty__user',flat=True)
-        all_wall_posts = WallPost.objects.filter(Q(user__in = connected_faculty_user,group__name__icontains = 'All') |
-                                                Q(group = student_instance.insti_group)|
-                                                Q(user=student_instance.institute.user,group__name__icontains = 'All')).values('wall_post','user__username','group__name')
+        all_wall_posts = WallPost.objects.filter(user = institute.user)
+        # all_wall_posts = WallPost.objects.filter(Q(user__in = connected_faculty_user,group__name__icontains = 'All') |
+        #                                         Q(group = student_instance.insti_group)|
+        #                                         Q(user=student_instance.institute.user,group__name__icontains = 'All')).values('wall_post','user__username','group__name')
 
         image_path = extract_logo_path(self.request.user)
         return locals()
 
+def instituteListing(request):
+    institutes = InstitueInfo.objects.all()
+    return render_to_response('studentinfo/institute_listing.html',locals(),context_instance = RequestContext(request))
+
+def facultyListing(request,insti_id):
+    faculties = FacultyInfo.objects.filter(institute_id=insti_id)
+    return render_to_response('studentinfo/faculty_listing.html',locals(),context_instance = RequestContext(request))

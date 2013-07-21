@@ -148,7 +148,7 @@ class CsvInfoUpload(TemplateView):
     def get_context_data(self, **kwargs):
         form = CsvInfoForm()
         institute = InstitueInfo.objects.get(user = self.request.user)
-        groups = StaticGroup.objects.filter(institute= institute).values('name','id')
+        groups = UserGroup.objects.filter(owner= institute).values('name','id')
         csv_objs = CsvInfo.objects.filter(institute = institute).values('file_upload','id','group__name')
         return locals()
 
@@ -162,11 +162,26 @@ class CsvInfoUpload(TemplateView):
 
 
 
+def showCsvData(request,csv_id):
+    csv_obj = CsvInfo.objects.get(id = csv_id)
+    try:
+        csv_reader_fd = csv.reader( open( settings.MEDIA_ROOT+'/'+csv_obj.file_upload.name,'rb' ) )
+    except IOError as e:
+        return HttpResponse("error in reading the file %s" %(e))
+    header = csv_reader_fd.next()
+    user_list=[]
+    for each_row in csv_reader_fd:
+        data = dict(zip(header, each_row))
+        if User.objects.filter(username=data['username']):
+            data['registered']=1
+        user_list.append(data)
+    return  render_to_response('instituteinfo/csvdata.html', locals(), context_instance = RequestContext(request))
 
 
 #todo: expensive ;for each user:5 db hit;optimize it
 def registrationFromCsv(request):
 #todo thread process, check if email id is already registered,add user to student group,add user to StudentInfo
+
     obj = CsvInfo.objects.get(id = request.POST['csv_obj_id'])
     try:
         csv_reader_fd = csv.reader( open( settings.MEDIA_ROOT+'/'+obj.file_upload.name,'rb' ) )
@@ -181,8 +196,10 @@ def registrationFromCsv(request):
             header = each_row
             exclude_fields = ['username','email']
 
-            model_form = modelform_factory(StudentInfo)
-
+            if obj.type=='Student':
+                model_form = modelform_factory(StudentInfo, exclude=('images','groups',))
+            elif obj.type == 'Faculty':
+                model_form = modelform_factory(FacultyInfo,exclude=('image','rating','connections','contact_number','address','qualification','work_experience'))
 
             username = data['username']
             if User.objects.filter(username = data['username']):
@@ -192,10 +209,11 @@ def registrationFromCsv(request):
                 form = UserCreationForm(data = {'username':username,'password1':random_number,'password2':random_number})
                 #todo-save group.studentinfo, connect to institute
                 form.save()#todo exception handling
-                group = Group.objects.get(name = 'student')
+                group = Group.objects.get(name = 'Student')
                 user = User.objects.get(username = username)
                 group.user_set.add(user)
                 institute = InstitueInfo.objects.get(user = request.user)
+                #todo-->unique number and image is mandatory which is giving error
                 data.update({'institute':institute.id,'status':'Verified','user':user.id,'profile':True})
                 form = model_form(data)
                 if form.is_valid():
@@ -249,7 +267,7 @@ def groups(request,group_id,student_id):
     change student group
     '''
     student_obj = StudentInfo.objects.get(id = student_id)
-    group_instance = StaticGroup.objects.get(id = group_id)
+    group_instance = UserGroup.objects.get(id = group_id)
     student_obj.insti_group= group_instance
     student_obj.save()
     return HttpResponse(True)
@@ -271,3 +289,38 @@ def extract_faculty_info(institute):
     user_ids = [faculty['user_id'] for faculty in faculties]
     image_info = ImageInfo.objects.filter( user__id__in = user_ids).values('photo','user__first_name')
     return image_info
+
+
+
+
+
+def registerStudent(request):
+    data=request.POST
+    model_form = modelform_factory(StudentInfo, exclude=('images','groups',))
+
+    username = data['username']
+    if User.objects.filter(username = data['username']):
+        pass
+    else:
+        random_number = User.objects.make_random_password(length=10, allowed_chars='123456789')#todo static/send password as a mail
+        form = UserCreationForm(data = {'username':username,'password1':random_number,'password2':random_number})
+        #todo-save group.studentinfo, connect to institute
+        form.save()#todo exception handling
+        group = Group.objects.get(name = 'Student')
+        user = User.objects.get(username = username)
+        group.user_set.add(user)
+        institute = InstitueInfo.objects.get(user = request.user)
+        #todo-->unique number and image is mandatory which is giving error
+        data.update({'institute':institute.id,'status':'Verified','user':user.id,'profile':True})
+        form = model_form(data)
+        if form.is_valid():
+            form.save()
+        subject = "Your New Password!"
+        message = random_number
+        msg = EmailMultiAlternatives( subject, '', settings.DEFAULT_FROM_EMAIL, (data['email'],) )
+        msg.attach_alternative( message, "text/html" )
+        try:
+            msg.send()
+        except:
+            pass
+    return HttpResponse('Done')

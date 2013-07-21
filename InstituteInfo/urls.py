@@ -1,7 +1,7 @@
 from django.conf.urls.defaults import patterns , url
 from InstituteInfo.views import InstituteProfile, StudentVerification,EditImage,\
     delete_post, ajax_save_images, CsvInfoUpload, registrationFromCsv,\
-    students_connected_to_institute,delete_student,groups,change_wall_group, delete_faculty,delete_csv
+    students_connected_to_institute,delete_student,groups,change_wall_group, delete_faculty,delete_csv,showCsvData,registerStudent
 
 urlpatterns = patterns( '',
 
@@ -28,5 +28,9 @@ urlpatterns = patterns( '',
 	 url( r'^wallgroup/(?P<group_id>[-\d]+)/(?P<wall_id>[-\d]+)$', change_wall_group , name = 'change_wall_group' ),
 
      url( r'^delete_csv$', delete_csv , name = 'delete_csv' ),
+
+     url( r'^csv_data/(?P<csv_id>[-\d]+)/$', showCsvData , name = 'show_csv_data' ),
+
+     url( r'^register_student/$', registerStudent , name = 'register_student' ),
 
 )

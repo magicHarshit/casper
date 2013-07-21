@@ -67,6 +67,9 @@
         Group
     </th>
     <th>
+        Type
+    </th>
+    <th>
         Csv File Name
     </th>
     <th>
@@ -84,6 +87,7 @@
             <td>
                 {{ csv_obj.group__name }}
             </td>
+            <td>{{ csv_obj.type }}</td>
             <td>
                 <a href="{{ MEDIA_URL }}{{ csv_obj.file_upload }}">{{ csv_obj.file_upload }}</a>
             </td>
@@ -98,6 +102,9 @@
                 <input type="hidden" value = "{{ csv_obj.id }}" name="csv_obj_id">
                 <input class="btn btn-primary" type="submit" value ="Delete"></button>
                 </form>
+            </td>
+            <td>
+                <a class="btn btn-primary" href="{% url show_csv_data csv_obj.id %}">Show Data</a>
             </td>
         </tr>
 

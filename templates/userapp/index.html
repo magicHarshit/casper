@@ -1,16 +1,17 @@
 {% extends "layouts/layout_base_2_columns.html" %}
 
 {% block A_1 %}
-
-<div class="homePageContainer">
-    <img src="{{ STATIC_URL }}default/media/images/casper2.jpg " width="656" >
-
+<div class="container-fluid" style="">
+<div class="row-fluid">
+<div class="homePageContainer span8">
+    <img src="http://www.w3resource.com/responsive-web-design/template1/8399337241_52f0280326_b.jpg" style=""/>
 </div>
-<div class ="login">
-    <form class="login-class" action="/" method="post">{% csrf_token %}
-        <h2 class="form-horizontal-heading">Please Login</h2>
-        <div class="control-group">
-            <div class="controls">
+<div class="span4">
+<div class ="login row-fluid">
+    <form class="login-class span12" action="/" method="post">{% csrf_token %}
+        <h2 class="form-horizontal-heading span12">Please Login</h2>
+        <div class="control-group span12 row-fluid" style="padding: 0px 30px 0px 30px;">
+            <div class="controls row-fluid">
 
                 {% if err_msg %}
                 {{ err_msg }}
@@ -29,11 +30,14 @@
         <input class="btn btn-primary" type="submit" value ="Login"></button>
     </form>
 </div>
-    <div class="form-signin2">
-        <div class ="registerInside">
-            <a href="#mySignupModal" role="button" class="btn btn-primary" data-toggle="modal">Registered User.SignUp Here</a>
-        </div>
+<div class="form-signin2 span12">
+    <div class ="registerInside">
+        <a href="#mySignupModal" role="button" class="btn btn-primary" data-toggle="modal">Registered User.SignUp Here</a>
     </div>
+</div>
+</div>
+</div>
+</div>
 <!--</div>-->
 
 <div id="mySignupModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="width: 275px; margin-left:-154px">
