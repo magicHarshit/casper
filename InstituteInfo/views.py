@@ -54,6 +54,7 @@ class InstituteProfile( PaginationMixin,TemplateView):
         students_ids = [student['user'] for student in students]
         student_users = User.objects.filter(id__in = students_ids).values('username','id')
         faculty_images = extract_faculty_info(institute)
+
         student_images = extract_student_info(institute)
         groups = UserGroup.objects.filter(owner= institute).values('name','id')
         return locals()
@@ -234,8 +235,9 @@ def registrationFromCsv(request):
 def students_connected_to_institute(request):
 
     institute = InstitueInfo.objects.get(user = request.user)
-    connected_students_ids = StudentInfo.objects.filter(institute = institute, status = 'Verified', profile = True).values_list('user_id',flat=True)
-    students = ImageInfo.objects.filter(user__id__in = connected_students_ids).values('photo','user__first_name','user__last_name')
+    connected_students = StudentInfo.objects.filter(institute = institute, status = 'Verified', profile = True).values\
+            ('user_id','user__first_name','user__username','images__photo','user__username')
+    # students = ImageInfo.objects.filter(user__id__in = connected_students_ids).values('photo','user__first_name','user__last_name')
     return  render_to_response('instituteinfo/mystudents.html', locals(), context_instance = RequestContext(request))
 
 
@@ -278,19 +280,17 @@ def delete_csv(request):
     return HttpResponseRedirect(reverse('csv_upload'))
 
 def extract_student_info(institute):
-    students = StudentInfo.objects.filter(institute=institute,status='Verified').values('user_id','user__username').order_by('?')[:4]
-    user_ids = [student['user_id'] for student in students]
-    image_info = ImageInfo.objects.filter( user__id__in = user_ids).values('photo','user__first_name')
-    return image_info
+    students = StudentInfo.objects.filter(institute=institute,status='Verified').values('user_id','user__username','images__photo','user__first_name').order_by('?')[:4]
+    # user_ids = [student['user_id'] for student in students]
+    # image_info = ImageInfo.objects.filter( user__id__in = user_ids).values('photo','user__first_name')
+    return students
 
 
 def extract_faculty_info(institute):
-    faculties = FacultyInfo.objects.filter(institute=institute).values('user_id','user__username').order_by('?')[:4]
-    user_ids = [faculty['user_id'] for faculty in faculties]
-    image_info = ImageInfo.objects.filter( user__id__in = user_ids).values('photo','user__first_name')
-    return image_info
-
-
+    faculties = FacultyInfo.objects.filter(institute=institute).values('user_id','user__username','image__photo').order_by('?')[:4]
+    # user_ids = [faculty['user_id'] for faculty in faculties]
+    # image_info = ImageInfo.objects.filter( user__id__in = user_ids).values('photo','user__first_name')
+    return faculties
 
 
 

@@ -13,7 +13,8 @@
                             <img  src ="{{ MEDIA_URL }}{{ faculty.image__photo }}" style="height:100%;width:100%">
                          </div>
                         <div class="facultyName">
-                         {{ faculty.user__first_name }}{{ faculty.user__last_name }}
+                            <a href={% url profile faculty.user_id faculty.user__username %}>
+                         {{ faculty.user__first_name }}{{ faculty.user__last_name }}</a>
                         </div>
 
                         {% if group_type == 'Institute' %}

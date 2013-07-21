@@ -42,7 +42,7 @@ def faculty_connected_to_institute(request):
         institute = InstitueInfo.objects.get(user = request.user)
     else:
         institute = StudentInfo.objects.get(user=request.user).institute
-    faculties = FacultyInfo.objects.filter(institute = institute,profile = True).values('image__photo','user__first_name','user__last_name')
+    faculties = FacultyInfo.objects.filter(institute = institute,profile = True).values('image__photo','user__first_name','user__last_name','user_id','user__username')
     # faculties = ImageInfo.objects.filter(user__id__in = connected_faculties_id).values('photo','user__first_name','user__last_name')
     # import pdb;pdb.set_trace()
     return  render_to_response('instituteinfo/myfaculty.html', locals(), context_instance = RequestContext(request))

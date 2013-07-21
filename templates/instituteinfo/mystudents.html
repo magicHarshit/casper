@@ -10,15 +10,17 @@
 
 
           <div style="margin: 255px 188px 0px 220px">
-            {% for student in students %}
+            {% for student in connected_students %}
                     <div class="listingFaculty">
 
 
                         <div class="studentImage">
-                            <img  src ="{{ MEDIA_URL }}{{ student.photo }}" height="100%" width="100%">
+                            <img  src ="{{ MEDIA_URL }}{{ student.images__photo }}" height="100%" width="100%">
                          </div>
                         <div class="facultyName">
-                         {{ student.appldetail__first_name }}{{ student.appldetail__last_name }}
+                            <a href={% url profile student.user_id student.user__username %}>
+                         {{ student.user__first_name }}
+                         {{ student.user__username }}</a>
                         </div>
 
                         {% if group_type == 'Institute' %}

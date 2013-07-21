@@ -20,16 +20,14 @@
                         <li class="expanded first">
                             <a title="" href="{% url csv_upload %}">Register Students</a>
                         </li>
-                        <li class="expanded first">
-                            <a title="" href="{% url csv_upload %}">Register Faculty</a>
-                        </li>
+
                     {% endif %}
                     {% if group_type == 'Student' %}
                         <li class="expanded first">
-                        <a title="" href="{% url connected_faculty %}">My Facult</a>
+                        <a title="" href="{% url connected_faculty %}">My Faculty</a>
                     {% endif %}
                     <li class="expanded first">
-                        <a title="" href="{% url profile_submission %}">My Details</a>
+                        <a title="" href="{% url profile request.user.id request.user.username %}">My Details</a>
                     </li>
                     <li >
                     <div class="dropdown">

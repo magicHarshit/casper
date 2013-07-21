@@ -27,9 +27,9 @@
         <div class="modal-body">
              {% for student_image in  student_images %}
                 <div class="studentImage">
-                    <img  src ="{{ MEDIA_URL }}{{ student_image.photo }}" height="100%" width="100%">
+                    <img  src ="{{ MEDIA_URL }}{{ student_image.images__photo }}" height="100%" width="100%">
                 <div id = 'editImage' style="margin-top: -20px">
-                    {{ student_image.appldetail__first_name }}
+                    <a href={%url profile student_image.user_id  student_image.user__username%}>{{ student_image.user__username }}</a>
                 </div>
                 </div>
             {% endfor %}
@@ -43,9 +43,9 @@
         <div class="modal-body">
             {% for faculty_image in  faculty_images %}
                 <div class="studentImage">
-                    <img  src ="{{ MEDIA_URL }}{{ faculty_image.photo }}" style="height:100%;width:100%">
+                    <img  src ="{{ MEDIA_URL }}{{ faculty_image.image__photo }}" style="height:100%;width:100%">
                     <div id = 'editImage' style="margin-top: -20px">
-                        {{ faculty_image.user__first_name }}
+                        <a href={%url profile faculty_image.user_id  faculty_image.user__username%}>{{ faculty_image.user__username }}</a>
                     </div>
                 </div>
             {% endfor %}
@@ -54,14 +54,14 @@
 
 
 
-{#    {% for each_student in student_users %}#}
-{#    <form class="logo form-frienRequest" style="margin-top: 300px " method="post" action="{% url student_verification %}"> {% csrf_token %}#}
-{#        {{ each_student.username}}#}
-{#        <input type = "hidden" value = "{{ each_student.id }}" name = "student_id"><br>#}
-{#        <input class="btn btn-primary" id="id_submit" name = 'status' type="submit"  value="Confirm" />#}
-{#        <input class="btn btn-primary" id="id_submit" name = 'status' type="submit"  value="Reject" />#}
-{#    </form>#}
-{#    {% endfor %}#}
+    {% for each_student in student_users %}
+    <form class="logo form-frienRequest" style="margin-top: 300px " method="post" action="{% url student_verification %}"> {% csrf_token %}
+        {{ each_student.username}}
+        <input type = "hidden" value = "{{ each_student.id }}" name = "student_id"><br>
+        <input class="btn btn-primary" id="id_submit" name = 'status' type="submit"  value="Confirm" />
+        <input class="btn btn-primary" id="id_submit" name = 'status' type="submit"  value="Reject" />
+    </form>
+    {% endfor %}
 
     <form class="form-wallPost" action="{% url institute_profile %}" method="post" style= "width: 541px ">{% csrf_token %}
         <div class="modal-header">

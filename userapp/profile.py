@@ -23,18 +23,20 @@ class ProfileSubmission(TemplateView):
 
     #TODO code repetion for getting instance in get and post remove it and fine solution '''
     def get_context_data( self, **kwargs ):
+        user = User.objects.get(username= kwargs.get('username'))
+        user_group = user.groups.values_list('name',flat = True)
         institute_instance=None
-        if 'Institute' in self.request.user.groups.values_list('name',flat = True):
+        if 'Institute' in user.groups.values_list('name',flat = True):
 
             try:
-                institute_instance = InstitueInfo.objects.get(user = self.request.user)
+                institute_instance = InstitueInfo.objects.get(user = user)
             except:
                 institute_instance = None
             form = InstituteInfoForm( instance = institute_instance )
 
-        elif 'Student' in self.request.user.groups.values_list('name',flat = True) :
+        elif 'Student' in user.groups.values_list('name',flat = True) :
             try:
-                student_instance = StudentInfo.objects.get(user = self.request.user)
+                student_instance = StudentInfo.objects.get(user = user)
                 institute_instance = student_instance.institute
             except:
                 student_instance = None
@@ -42,16 +44,16 @@ class ProfileSubmission(TemplateView):
 
             form = StudentInfoForm( instance = student_instance )
 
-        elif 'Faculty' in self.request.user.groups.values_list('name',flat = True) :
+        elif 'Faculty' in user.groups.values_list('name',flat = True) :
             try:
-                faculty_instance = FacultyInfo.objects.get(user = self.request.user)
+                faculty_instance = FacultyInfo.objects.get(user = user)
             except:
                 faculty_instance = None
             form = FacultyInfoForm( instance = faculty_instance )
         # todo image only for institute,make it for all three
         # import pdb;pdb.set_trace()
         # import pdb;pdb.set_trace()
-        image_path = extract_logo_path(self.request.user)
+        image_path = extract_logo_path(user)
         return locals()
 
     def post(self, *args, **kwargs):

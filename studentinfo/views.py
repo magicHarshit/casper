@@ -58,5 +58,5 @@ def instituteListing(request):
     return render_to_response('studentinfo/institute_listing.html',locals(),context_instance = RequestContext(request))
 
 def facultyListing(request,insti_id):
-    faculties = FacultyInfo.objects.filter(institute_id=insti_id)
+    faculties = FacultyInfo.objects.filter(institute__id=insti_id)
     return render_to_response('studentinfo/faculty_listing.html',locals(),context_instance = RequestContext(request))
