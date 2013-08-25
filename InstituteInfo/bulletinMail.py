@@ -1,8 +1,8 @@
 
 import threading
 from django.core.mail import EmailMultiAlternatives
-from studentinfo.models import StudentInfo
-from InstituteInfo.models import InstitueInfo
+
+
 import settings
 
 class sendMailThread(threading.Thread):
@@ -16,9 +16,10 @@ class sendMailThread(threading.Thread):
 
 
 def sending_mail(request):
-
-    institute = InstitueInfo.objects.get(user = request.user)
-    students_connected = StudentInfo.objects.filter(institute = institute, status = 'Verified', profile = True).values_list('user__username',flat= True)
+    institute = ''
+    student = ''
+    # institute = InstitueInfo.objects.get(user = request.user)
+    # students_connected = StudentInfo.objects.filter(institute = institute, status = 'Verified', profile = True).values_list('user__username',flat= True)
     for student in students_connected:
         message = request.POST['wall_post']
         msg = EmailMultiAlternatives( 'subject-New Wall Post', '', settings.EMAIL_HOST_USER, [student] )

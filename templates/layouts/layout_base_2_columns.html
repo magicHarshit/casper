@@ -3,7 +3,12 @@
 {% block breadcrumbs %}{% endblock breadcrumbs %}
 {% block top %}{% endblock top %}
 {% block A %}
-{% block A_1 %}{% endblock A_1 %}
+
+{% block A_1 %}
+    {% include 'userapp/top.html' %}
+    {% include 'userapp/leftmenu.html' %}
+{% endblock A_1 %}
+
 {% block A_2 %}{% endblock A_2 %}
 {% block A_3 %}{% endblock A_3 %}
 {% block A_4 %}{% endblock A_4 %}

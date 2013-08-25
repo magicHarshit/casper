@@ -1,4 +1,3 @@
-__author__ = 'harshit'
 from django.contrib.auth.forms import  AuthenticationForm
 from django import forms
 from django.core.validators import email_re
@@ -10,13 +9,9 @@ from django.contrib.sites.models import Site
 from django.template import Context, loader
 from django.utils.http import int_to_base36
 
-
-USER_CHOICES = (
-    ('Institute','Institute'),
-    ('Student','Student'),
-    ('Faculty','Faculty'),
-
-)
+from InstituteInfo.models import USER_TYPE
+from master.models import MyUser
+from django.contrib.auth import get_user_model
 
 class RegistrationForm(UserCreationForm):
 
@@ -30,7 +25,11 @@ class RegistrationForm(UserCreationForm):
 
     first_name = forms.CharField(max_length= 100,widget=forms.TextInput(attrs={'placeholder': 'First Name'}))
     last_name = forms.CharField(max_length= 100,widget=forms.TextInput(attrs={'placeholder': 'Last Name'}))
-    groups = forms.ChoiceField( choices= USER_CHOICES)
+    user_type = forms.ChoiceField(choices=USER_TYPE)
+
+    class Meta:
+        model = get_user_model()
+        fields = ('username', 'first_name', 'last_name', 'password1', 'password2', 'user_type')
 
     def clean_password1(self):
         password1 = self.cleaned_data["password1"]
@@ -39,7 +38,6 @@ class RegistrationForm(UserCreationForm):
         return password1
 
     def clean_username(self):
-
         username = self.cleaned_data["username"]
         if len(username) < 6:
             raise forms.ValidationError("Enter username of min 6 charcters")

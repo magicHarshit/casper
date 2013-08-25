@@ -1,13 +1,15 @@
 from django.conf.urls.defaults import patterns , url
-from InstituteInfo.views import InstituteProfile, StudentVerification,EditImage,\
-    delete_post, ajax_save_images, CsvInfoUpload, registrationFromCsv,\
-    students_connected_to_institute,delete_student,groups,change_wall_group, delete_faculty,delete_csv,showCsvData,registerStudent
+from InstituteInfo.views import  StudentVerification,EditImage\
+    , ajax_save_images, CsvInfoUpload, registrationFromCsv,\
+    delete_student,groups,change_wall_group, delete_faculty,delete_csv,showCsvData,registerStudent,BulletinInfo,messages
 
 urlpatterns = patterns( '',
 
-     url( r'^profile/$', InstituteProfile.as_view(), name = 'institute_profile' ),
+     # url( r'^(?P<insti_id>[-\d]+)/$', InstituteProfile.as_view(), name = 'institute_profile' ),
+
+
 	 url(r'^student_verification/$', StudentVerification.as_view(), name = 'student_verification' ),
-	 url( r'^delete/(?P<id>[-\d]+)$', delete_post, name = 'delete_post' ),
+	 # url( r'^delete/(?P<id>[-\d]+)$', delete_post, name = 'delete_post' ),
 
 	 url( r'^edit_image/$', EditImage.as_view(), name = 'edit_image' ),
 
@@ -17,7 +19,7 @@ urlpatterns = patterns( '',
 
 	 url( r'^register_users/$', registrationFromCsv, name = 'register_users' ),
 
-	 url( r'^connected_students/$', students_connected_to_institute , name = 'connected_students' ),
+	 # url( r'^connected_students/$', students_connected_to_institute , name = 'connected_students' ),
 
 	 url( r'^delete_student/$', delete_student , name = 'delete_student' ),
 
@@ -32,5 +34,9 @@ urlpatterns = patterns( '',
      url( r'^csv_data/(?P<csv_id>[-\d]+)/$', showCsvData , name = 'show_csv_data' ),
 
      url( r'^register_student/$', registerStudent , name = 'register_student' ),
+
+     url(r'^bulletin/(?P<bulletin_id>[-\d]+)/$',BulletinInfo.as_view(), name='show_bulletin'),
+
+     url(r'^messages/$',messages, name='messages')
 
 )

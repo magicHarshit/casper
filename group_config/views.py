@@ -9,7 +9,7 @@ from django.shortcuts import render_to_response
 from django.core.urlresolvers import reverse
 from group_config.forms import  GroupConfigurationForm
 from models import UserGroup
-from InstituteInfo.models import InstitueInfo
+
 from InstituteInfo.views import extract_logo_path
 
 class UserGroupConfiguration(TemplateView):
@@ -24,23 +24,28 @@ class UserGroupConfiguration(TemplateView):
         form = GroupConfigurationForm( data = self.request.POST)
         if form.is_valid():
             obj = form.save(commit= False)
-            obj.owner = InstitueInfo.objects.get(user = self.request.user)
+            obj.owner = self.request.user
             obj.save()
             'reverse to group listing'
-            return HttpResponseRedirect(reverse('static_group_listing'))
+            return HttpResponseRedirect(reverse('group_listing' ,args=(self.request.user.username,)))
 
-def get_group_listing(request):
-    institute = InstitueInfo.objects.get(user = request.user)
-    image_path = extract_logo_path(request.user)
-    groups = UserGroup.objects.filter(owner = institute)
-    form = GroupConfigurationForm()
-    return render_to_response('group_config/static_group_listing.html', locals(), context_instance = RequestContext(request))
+# from django.contrib.auth import get_user_model
+# def get_group_listing(request,**kwargs):
+#
+#     username = kwargs.get('username')
+#     user = get_user_model().objects.get(username = username)
+#
+#     # institute = InstitueInfo.objects.get(user = request.user)
+#     # image_path = extract_logo_path(request.user)
+#     groups = UserGroup.objects.filter(owner = user)
+#     form = GroupConfigurationForm()
+#     return render_to_response('group_config/static_group_listing.html', locals(), context_instance = RequestContext(request))
 
 def delete_group(request,*kwargs):
     id = request.POST.get('id')
     group = UserGroup.objects.filter(id = id)
     group.delete()
-    return HttpResponseRedirect(reverse('static_group_listing'))
+    return HttpResponseRedirect(reverse('group_listing' ,args=(request.user.username,)))
 #    return render_to_response('group_config/static_group_listing.html', locals(), context_instance = RequestContext(request))
 
 def edit_group(request,group_id):

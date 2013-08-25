@@ -1,6 +1,4 @@
 __author__ = 'harshit'
-
-
 from django.contrib.auth.forms import AuthenticationForm
 from django.template.context import RequestContext
 from userapp.forms import  LoginAuthenticationForm, RegistrationForm
@@ -9,15 +7,15 @@ from django.contrib.auth import authenticate, login as auth_login
 from django.contrib.auth.models import User, Group
 from django.http import  HttpResponse, HttpResponseRedirect
 from django.shortcuts import render_to_response
-from studentinfo.forms import StudentInfoForm
-from InstituteInfo.forms import InstituteInfoForm, WallPostForm
 from django.core.urlresolvers import reverse
-from studentinfo.models import StudentInfo
-from InstituteInfo.models import WallPost, InstitueInfo
+
+from InstituteInfo.models import Bulletin
 from django.views.static import serve
 from InstituteInfo.views import extract_logo_path
-from facultyinfo.models import FacultyConnections,FacultyInfo
+
 from django.db.models import Q
+from django.contrib.auth import get_user_model
+from master.models import UserSelf
 
 
 
@@ -35,22 +33,24 @@ class StudentInbox(TemplateView):
     template_name = 'studentinfo/inbox.html'
 
     def get_context_data(self, **kwargs):
-        if StudentInfo.objects.get(user = self.request.user).status == 'Pending':
+
+        user_id = kwargs.get('user_id')
+        user = get_user_model().objects.get(id=user_id)
+        connections = UserSelf.objects.filter(target=self.request.user)
+        if len(connections) == 0:
+            message = 'Connect Yourself with Institute,search from search box'
+            return locals()
+        if user.status == 'Pending':
             message = 'Please Wait! your request is Under Process'
             return locals()
-        elif StudentInfo.objects.get(user = self.request.user).status == 'Rejected':
+        elif user.status == 'Rejected':
             message = 'Your request is rejected by institute'
             return locals()
-        student_instance = StudentInfo.objects.get(user = self.request.user, status = 'Verified')
+        # connected_faculty_user = UserSelf.objects.filter(target=self.request.user, source__user_type='Faculty').\
+        #     values('source__first_name', 'source__last_name', 'source__photo')
 
-        institute = student_instance.institute
-        connected_faculty_user = FacultyConnections.objects.filter(student= student_instance).values_list('faculty__user',flat=True)
-        all_wall_posts = WallPost.objects.filter(user = institute.user)
-        # all_wall_posts = WallPost.objects.filter(Q(user__in = connected_faculty_user,group__name__icontains = 'All') |
-        #                                         Q(group = student_instance.insti_group)|
-        #                                         Q(user=student_instance.institute.user,group__name__icontains = 'All')).values('wall_post','user__username','group__name')
+        # all_bulletins = Bulletin.objects.filter(user = institute.user)#todo
 
-        image_path = extract_logo_path(self.request.user)
         return locals()
 
 def instituteListing(request):

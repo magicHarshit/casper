@@ -62,6 +62,8 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.middleware.transaction.TransactionMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+    'openshift.master.forms.AuthenticationMiddleware'
     )
 
 ROOT_URLCONF = os.path.basename(os.path.dirname(__file__)) + '.urls'
@@ -92,6 +94,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.humanize',
     'django.contrib.sitemaps',
+    # 'django.contrib.comments',
     'group_config',
     'InstituteInfo',
     'master',
@@ -100,7 +103,9 @@ INSTALLED_APPS = (
     'facultyinfo',
     'custom_context_processor',
     'endless_pagination',
+    # 'custom_comment',
     'south',
+    # 'persistent_messages',
     )
 
 AUTHENTICATION_BACKENDS = (
@@ -119,6 +124,8 @@ STATICFILES_DIRS = (
     )
 #delayed notifications, time in seconds, 15 mins by default
 NOTIFICATION_DELAY_TIME = 60 * 15
+
+SECRET_KEY = 'o3e(t&1l8(1j_!gn@m+r=km28&!zdazm2m)6n@eze6h=f$nq2#'
 
 ON_OPENSHIFT = False
 if os.environ.has_key('OPENSHIFT_REPO_DIR'):
@@ -159,15 +166,16 @@ TEMPLATE_DIRS = (
     os.path.join(PROJECT_DIR, 'templates'),
 )
 
+
 TEMPLATE_CONTEXT_PROCESSORS = (
-    'django.core.context_processors.request',
-    'django.core.context_processors.auth',
-    'django.core.context_processors.csrf', #necessary for csrf protection
-    'django.core.context_processors.i18n',
-    'django.core.context_processors.static',
-    'django.core.context_processors.media',
-    'custom_context_processor.groups.base_items'
-    )
+    "django.contrib.auth.context_processors.auth",
+    "django.core.context_processors.debug",
+    "django.core.context_processors.i18n",
+    "django.core.context_processors.media",
+    "django.core.context_processors.static",
+    "django.contrib.messages.context_processors.messages",
+
+)
 
 IMAGE_CROPPING_THUMB_SIZE = (300, 300)
 
@@ -187,3 +195,7 @@ else:
     MEDIA_URL = '/media/'
 
 
+# MESSAGE_STORAGE = 'persistent_messages.storage.PersistentMessageStorage'
+
+# COMMENTS_APP = 'custom_comment'
+AUTH_USER_MODEL = 'master.MyUser'

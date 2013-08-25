@@ -4,7 +4,7 @@ from studentinfo.views import StudentInbox,instituteListing,facultyListing
 
 
 urlpatterns = patterns( '',
-         url( r'^inbox/$', StudentInbox.as_view(), name = 'student_inbox' ),
+         url( r'^(?P<user_id>[-\d]+)/$', StudentInbox.as_view(), name = 'student_inbox' ),
 
          url( r'^search/$', instituteListing, name = 'institute_listing' ),
 

@@ -55,6 +55,10 @@ urlpatterns = patterns('',
      url( r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT} ),
 
      #(r'^photologue/', include('photologue.urls')),
+
+     # (r'^messages/', include('persistent_messages.urls')),
+
+     # (r'^comments/', include('django.contrib.comments.urls')),
 )
 
 if 'rosetta' in settings.INSTALLED_APPS:

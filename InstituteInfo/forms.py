@@ -2,19 +2,14 @@ __author__ = 'harshit'
 
 
 from django import forms
-from InstituteInfo.models import InstitueInfo, WallPost
+from InstituteInfo.models import  Bulletin
 from models import CsvInfo
 
-class InstituteInfoForm(forms.ModelForm):
-     class Meta:
-         model = InstitueInfo
-         exclude = ('user','display_map','profile','slug','display_flag','image')
 
-
-class WallPostForm(forms.ModelForm):
+class BulletinForm(forms.ModelForm):
     class Meta:
-        model = WallPost
-        fields = ('wall_post','group')
+        model = Bulletin
+        fields = ('title','body','attachments','group')
 
 
 class CsvInfoForm(forms.ModelForm):

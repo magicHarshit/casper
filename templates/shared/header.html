@@ -1,51 +1,88 @@
-<div id="page">
-    <div id="header-outer">
-        <div id="header">
-                <a href="/" id="logo" title="Home" style="background: none">Casper</a>
-            {% if self.request.user.is_authenticated or request.user.is_authenticated %}
-                <ul id="title-nav" class="sf-js-enabled" style="float: right">
-                    <li class="expanded first">
-                        <a title=""> Welcome {{ request.user }}</a>
-                    </li>
-                    {% if group_type == 'Institute' %}
-                        <li class="expanded first">
-                            <a title="" href="{% url static_group_listing %}">MyGroups</a>
-                        </li>
-                        <li class="expanded first">
-                            <a title="" href="{% url connected_students %}">MyStudents</a>
-                        </li>
-                        <li class="expanded first">
-                            <a title="" href="{% url connected_faculty %}">MyFaculty</a>
-                        </li>
-                        <li class="expanded first">
-                            <a title="" href="{% url csv_upload %}">Register Students</a>
-                        </li>
+{#<div id="page">#}
+{#    <div id="header-outer">#}
+{#        <div id="header">#}
+{#                <a href="/" id="logo" title="Home" style="background: none">Casper</a>#}
+{#            {% if self.request.user.is_authenticated or request.user.is_authenticated %}#}
+{#                <ul id="title-nav" class="sf-js-enabled" style="float: right">#}
+{#                    <li class="expanded first">#}
+{#                        <a title=""> Welcome {{ request.user }}</a>#}
+{#                    </li>#}
+{#                    {% if group_type == 'Institute' %}#}
+{#                        <li class="expanded first">#}
+{#                            <a title="" href="{% url 'static_group_listing' %}">MyGroups</a>#}
+{#                        </li>#}
+{#                        <li class="expanded first">#}
+{#                            <a title="" href="{% url 'connected_students' %}">MyStudents</a>#}
+{#                        </li>#}
+{#                        <li class="expanded first">#}
+{#                            <a title="" href="{% url 'connected_faculty' %}">MyFaculty</a>#}
+{#                        </li>#}
+{#                        <li class="expanded first">#}
+{#                            <a title="" href="{% url 'csv_upload' %}">Register Students</a>#}
+{#                        </li>#}
+{##}
+{#                    {% endif %}#}
+{#                    {% if group_type == 'Student' %}#}
+{#                        <li class="expanded first">#}
+{#                        <a title="" href="{% url 'connected_faculty' %}">My Faculty</a>#}
+{#                    {% endif %}#}
+{#                    <li class="expanded first">#}
+{#                        <a title="" href="{% url profile request.user.id request.user.username %}">My Details</a>#}
+{#                    </li>#}
+{#                    <li >#}
+{#                    <div class="dropdown">#}
+{#                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">My Account</a>#}
+{#                        <ul class="dropdown-menu menu" role="menu" aria-labelledby="dLabel">#}
+{#                            <li class="leaf"><a href="{% url 'changepassword' %}" title="">Change Password</a></li>#}
+{#                            <li class="leaf"><a href="{% url 'logout' %}" title="">Logout</a></li>#}
+{#                        </ul>#}
+{#                    </div>#}
+{#                    </li>#}
+{#                </ul>#}
+{#            {% endif %}#}
+{#        </div>#}
+{#    </div>#}
+{#</div>#}
+{##}
+{##}
+{# <div id="div_cointainer_photo" style="display:none;height: 0;width: 0px;overflow: hidden"></div>#}
+{#    <div style="text-align:center;padding:20px;">#}
+{#        <a href="#TB_inline?height=400&amp;width=700&amp;inlineId=div_cointainer_photo" class="thickbox" id='a_tag'></a>#}
+{#    </div>#}
 
-                    {% endif %}
-                    {% if group_type == 'Student' %}
-                        <li class="expanded first">
-                        <a title="" href="{% url connected_faculty %}">My Faculty</a>
-                    {% endif %}
-                    <li class="expanded first">
-                        <a title="" href="{% url profile request.user.id request.user.username %}">My Details</a>
-                    </li>
-                    <li >
-                    <div class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">My Account</a>
-                        <ul class="dropdown-menu menu" role="menu" aria-labelledby="dLabel">
-                            <li class="leaf"><a href="{% url changepassword %}" title="">Change Password</a></li>
-                            <li class="leaf"><a href="{% url logout %}" title="">Logout</a></li>
-                        </ul>
-                    </div>
-                    </li>
-                </ul>
-            {% endif %}
-        </div>
-    </div>
+
+<div id="header_fixed_top">
+<div align="center">
+<div class="span12" style="float:none !important">
+<div class="pull-left brand">Casper</div>
+
+<!--seatch-->
+
+  <div>
+        <form action="{% url "search_user" %}" method="GET">
+        <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" style="float:left; margin-top:9px; margin-left:240px;">Action <span class="caret"></span></button>
+        <ul class="dropdown-menu">
+          <li><a href="#">Action</a></li>
+          <li><a href="#">Another action</a></li>
+          <li><a href="#">Something else here</a></li>
+          <li class="divider"></li>
+          <li><a href="#">Separated link</a></li>
+        </ul>
+
+      <input type="text" name="q"  class="form-control span2" style="border-left: medium none;
+    float: left;
+    margin-left: -8px; margin-top:9px; border-radius:0px 4px 4px 0;">
+
+
+
+<button type="submit">search</button>
+</form>
+ </div><!-- /.col-lg-6 -->
+<!--<input type="text" class="search-query"  style="margin-top:10px">-->
+
+<!--search ends-->
+
+<div class="pull-right"><ul class="nav pull-right"><li class="active_top"><a href="#">Home</a></li><li ><a href="#">{{ request.user.first_name }}</a></li></ul></div>
 </div>
-
-
- <div id="div_cointainer_photo" style="display:none;height: 0;width: 0px;overflow: hidden"></div>
-    <div style="text-align:center;padding:20px;">
-        <a href="#TB_inline?height=400&amp;width=700&amp;inlineId=div_cointainer_photo" class="thickbox" id='a_tag'></a>
-    </div>
+</div>
+</div>

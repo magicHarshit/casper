@@ -24,4 +24,5 @@ INSTITUTE_USER=(('Chairman','Chairman'),
 
 USER_TYPE=(('Faculty','Faculty'),
             ('Student','Student'),
+           ('Institute','Institute'),
     )

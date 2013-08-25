@@ -2,7 +2,7 @@
 
 {% block A_1 %}
 
-    <form style='height: 0px;width:0px; overflow:hidden;' enctype="multipart/form-data" method="post" class="form-horizontal"> {% csrf_token %}
+    <form style='height: 0px;width:0px; overflow:hidden;' enctype="m    ultipart/form-data" method="post" class="form-horizontal"> {% csrf_token %}
     <label class="control-label" for="id_photo"></label>
         <input id="upfile"  type="file" name="photo">
     <input type="hidden" value="{}" name="crop_dictionary" id="id_cropdict">
@@ -19,17 +19,38 @@
         </div>
     </div>
 
+{#{% include "persistent_messages/message/includes/messages.jquery.html" %}#}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     <form class="formStudents">
         <div class="modal-header">
-            <a href ={% url connected_students %}><strong>Students</strong></a>
+            <a href ={% url 'connected_students' %}><strong>Students</strong></a>
         </div>
         <div class="modal-body">
              {% for student_image in  student_images %}
                 <div class="studentImage">
                     <img  src ="{{ MEDIA_URL }}{{ student_image.images__photo }}" height="100%" width="100%">
                 <div id = 'editImage' style="margin-top: -20px">
-                    <a href={%url profile student_image.user_id  student_image.user__username%}>{{ student_image.user__username }}</a>
+                    <a href={%url 'profile' student_image.user_id  student_image.user__username%}>{{ student_image.user__username }}</a>
                 </div>
                 </div>
             {% endfor %}
@@ -38,14 +59,14 @@
 
       <form class="formFaculty">
         <div class="modal-header">
-            <a href ={% url connected_faculty %}><strong>Faculty</strong></a>
+            <a href ={% url 'connected_faculty' %}><strong>Faculty</strong></a>
         </div>
         <div class="modal-body">
             {% for faculty_image in  faculty_images %}
                 <div class="studentImage">
                     <img  src ="{{ MEDIA_URL }}{{ faculty_image.image__photo }}" style="height:100%;width:100%">
                     <div id = 'editImage' style="margin-top: -20px">
-                        <a href={%url profile faculty_image.user_id  faculty_image.user__username%}>{{ faculty_image.user__username }}</a>
+                        <a href={%url 'profile' faculty_image.user_id  faculty_image.user__username%}>{{ faculty_image.user__username }}</a>
                     </div>
                 </div>
             {% endfor %}
@@ -55,7 +76,7 @@
 
 
     {% for each_student in student_users %}
-    <form class="logo form-frienRequest" style="margin-top: 300px " method="post" action="{% url student_verification %}"> {% csrf_token %}
+    <form class="logo form-frienRequest" style="margin-top: 300px " method="post" action="{% url 'student_verification' %}"> {% csrf_token %}
         {{ each_student.username}}
         <input type = "hidden" value = "{{ each_student.id }}" name = "student_id"><br>
         <input class="btn btn-primary" id="id_submit" name = 'status' type="submit"  value="Confirm" />
@@ -63,29 +84,18 @@
     </form>
     {% endfor %}
 
-    <form class="form-wallPost" action="{% url institute_profile %}" method="post" style= "width: 541px ">{% csrf_token %}
+    <form class="form-wallPost" method="post" style= "width: 541px ">{% csrf_token %}
         <div class="modal-header">
+            {{ request.user.id }}
             <h2>Bulletin Board:Post Your Bulletins Here.</h2>
         </div>
         <div class="modal-body">
-        {% for each_field in wall_post.visible_fields %}
+        {% for each_field in bulletinForm.visible_fields %}
             {%  if each_field.errors %}
                 {{ each_field.errors }}
             {% endif %}
-            {% if each_field.name == 'wall_post' %}
-            <div style="width: 100%">
-                <textarea style="width: 497px" id="id_wall_post" name="wall_post" cols="157" rows="6"></textarea>
-            </div>
-            {% else %}
-                Bulletin For
-                <select id="id_group" name="group" >
-                    {% for group in groups %}
-                            <option value="{{ group.id }}" selected="True">{{ group.name }}</option>
-                     +       </option>
-                    {% endfor %}
-                </select>
+            {{ each_field }}
 
-            {% endif %}
         {% endfor %}
         </div>
         <div class="modal-footer">
@@ -99,7 +109,7 @@
 
 {#endless#}
 {% include page_template %}
-{# end of endless :D #}
+{#end of endless :D #}
 
 
 

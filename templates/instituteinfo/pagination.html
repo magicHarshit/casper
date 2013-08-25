@@ -1,15 +1,15 @@
 
 <div class="wallPostDiv">
 {% load endless %}
-{% paginate all_wall_posts %}
-{%  for wall_post in all_wall_posts  %}
+{% paginate all_bulletins %}
+{%  for bulletin in all_bulletins %}
     <div class="wallPost" >
         <div class="modal-header">
-            {{wall_post.date_posted}} Posted By:{{ wall_post.user__username }}
+            {{bulletin.date_posted}} Posted By:{{ bulletin.user__username }}
             <select id ="wallGroup" select class="wallGroups">
                 <option value="">None</option>
                 {% for group in groups %}
-                    {% if group.id == wall_post.group__id %}
+                    {% if group.id == bulletin.group__id %}
                         <option value="{{ group.id }}" selected="True">{{ group.name }}</option>
                     {% else %}
                         <option value="{{ group.id }}" class="groupName" onclick="changeGroup('{{ group.id }}','{{ wall_post.id }}')">
@@ -18,9 +18,9 @@
                     {% endif %}
                 {% endfor %}
             </select>
-            <a class="icon-trash"  style="float: right" href ="{% url delete_post wall_post.id %}"></a>
+            <a class="icon-trash"  style="float: right" href ="{% url 'delete_post' bulletin.id %}"></a>
         </div>
-        {{ wall_post.wall_post }}
+        <a href={% url 'show_bulletin' bulletin.id %}>{{ bulletin.title }}</a>
     </div>
 {%  endfor  %}
 {% show_more %}

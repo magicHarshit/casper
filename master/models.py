@@ -1,37 +1,44 @@
-__author__ = 'harshit'
-
-
 from django.db import models
 from django.contrib.auth.models import User
-import datetime
-from master.choices import IMAGE_TYPE
+from django.db.models.signals import post_save
+from InstituteInfo.choices import INSTITUTE_TYPE,LIST_YEAR,USER_TYPE
+from studentinfo.choices import STATUS_CHOICES
+from django.db import models
+from django.contrib.auth.models import ( AbstractUser)
+# from group_config.models import UserGroup
 
 
-class BasicCofigurationFields( models.Model ):
-    name = models.CharField( max_length = 250 )
-    slug = models.SlugField( default = '', max_length = 100 )
-    created_date = models.DateTimeField( default = datetime.datetime.now(), auto_now_add = True )
-    modified_date = models.DateTimeField( default = datetime.datetime.now(), auto_now = True )
-    display_flag = models.BooleanField( default = True )
-
-    objects = models.Manager()
-
-    class Meta:
-        abstract = True
-
-
-def imagepath( instance, filename ):
+def imagepath(instance, filename):
     """ Computes the infrastructure images upload path """
-    return "uploads/user_images/%s/%s" % ( instance.user.id, str( filename ).replace( " ", "-" ) )
+    return "uploads/user_images/%s/%s" % (instance.user.id, str(filename).replace(" ", "-"))
 
 
-
-class ImageInfo( models.Model ):
-    user = models.ForeignKey(User, blank = True, null = True )
-    photo = models.ImageField( upload_to=imagepath )
-    active = models.BooleanField(default=False)
-    type = models.CharField(max_length=100,choices=IMAGE_TYPE)
-    objects = models.Manager()
+class MyUser(AbstractUser):
+    photo = models.ImageField(upload_to=imagepath)
+    user_type = models.CharField(max_length=25, choices=USER_TYPE)
+    institute_type = models.CharField(max_length=25, choices=INSTITUTE_TYPE )
+    establishment_year = models.IntegerField(blank=True, null=True, choices=LIST_YEAR )
+    address = models.TextField()
+    profile = models.BooleanField(default=False, blank=True)
+    status = models.CharField(max_length=100, choices=STATUS_CHOICES, default='Pending')
+    qualification = models.CharField(max_length=100)
+    work_experience = models.CharField(max_length=100)
+    rating = models.FloatField(default=0)
+    unique_number = models.CharField(max_length=30)
+    connections = models.ManyToManyField("self", through='UserSelf', symmetrical=False)
 
     def __unicode__(self):
-        return str(self.user) + '-' + str(self.type)
+        return self.username
+
+def post_save_default_image(sender, instance, **kwargs):
+    if kwargs['created'] is True:
+        photo = "uploads/user_images/%s/%s" % ('default', str('images.jpeg').replace(" ", "-"))
+        instance.photo = photo
+        instance.save()
+
+class UserSelf(models.Model):
+    source = models.ForeignKey(MyUser, related_name='source')
+    target = models.ForeignKey(MyUser, related_name='target')
+    group = models.ForeignKey('group_config.UserGroup', null=True, blank=True)
+
+post_save.connect(post_save_default_image, sender= MyUser)

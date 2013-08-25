@@ -6,13 +6,12 @@ from django.contrib.auth import authenticate, login as auth_login
 from django.contrib.auth.models import User, Group
 from django.http import  HttpResponse, HttpResponseRedirect
 from django.shortcuts import render_to_response
-from studentinfo.forms import StudentInfoForm
-from forms import InstituteInfoForm, WallPostForm
+from InstituteInfo.forms import BulletinForm
 from django.core.urlresolvers import reverse
-from studentinfo.models import StudentInfo
-from models import WallPost, InstitueInfo, ImageInfo
-from master.forms import ImagesInfoForm
-from InstituteInfo.models import *
+
+from InstituteInfo.models import Bulletin
+# from master.forms import ImagesInfoForm
+
 from crop import crop_image
 import copy
 from django.utils.decorators import method_decorator
@@ -26,60 +25,30 @@ import csv
 from django.contrib.auth.forms import UserCreationForm
 from django.core.mail import EmailMultiAlternatives
 from django.conf import settings
-from facultyinfo.models import FacultyInfo
+
 from group_config.models import UserGroup
 from django.utils.decorators import method_decorator
 from endless_pagination.decorators import page_template
 
+import persistent_messages
+# from django.contrib import messages
+from persistent_messages.models import Message
 
 class PaginationMixin(object):
     # @method_decorator(page_template('instituteinfo/pagination.html'))
     def dispatch(self, request, *args, **kwargs):
         return super(PaginationMixin, self).dispatch(request, *args, **kwargs)
 
-class InstituteProfile( PaginationMixin,TemplateView):
-    template_name = 'instituteinfo/institute_profile.html'
-
-    def get_context_data(self,extra_context=None, **kwargs):
-        wall_post = WallPostForm()
-        all_wall_posts = WallPost.objects.filter(user = self.request.user).values('wall_post','id','date_posted','group__name','group__id','user__username').order_by('-id')
-
-        page_template='instituteinfo/pagination.html'
-        if self.request.is_ajax():
-            self.template_name=page_template
-
-        institute = InstitueInfo.objects.get(user = self.request.user)
-        image_path = extract_logo_path(self.request.user)
-        students = StudentInfo.objects.filter(institute = institute, status = 'Pending').values('user')
-        students_ids = [student['user'] for student in students]
-        student_users = User.objects.filter(id__in = students_ids).values('username','id')
-        faculty_images = extract_faculty_info(institute)
-
-        student_images = extract_student_info(institute)
-        groups = UserGroup.objects.filter(owner= institute).values('name','id')
-        return locals()
-
-    def post(self, *args, **kwargs):
-        wall_post = WallPostForm(data = self.request.POST)
-        if wall_post.is_valid():
-            wall_post_obj = wall_post.save(commit= False)
-            wall_post_obj.user = self.request.user
-            wall_post_obj.save()
-            all_wall_posts = WallPost.objects.filter(user = self.request.user).values_list('wall_post',flat=True)
-            thread_obj = sendMailThread(self.request)
-            thread_obj.start()
-            return HttpResponseRedirect(".")
-        return render_to_response("instituteinfo/institute_profile.html",locals(),context_instance = RequestContext(self.request))
-
+from django.contrib.auth import get_user_model
 def extract_logo_path(user):
     image_path = ImageInfo.objects.filter( user = user).values('photo')
     return image_path
 
 
-def delete_post(request, id):
-    wall_post = WallPost.objects.get(id = id)
-    wall_post.delete()
-    return HttpResponseRedirect(reverse('institute_profile'))
+# def delete_post(request, id):
+#     bulletin= Bulletin.objects.get(id = id)
+#     bulletin.delete()
+#     return HttpResponseRedirect(reverse('institute_profile', args=(request.user.username,)))
 
 
 class EditImage(TemplateView):
@@ -134,13 +103,14 @@ class StudentVerification(TemplateView):
         return locals()
 
     def post(self, *args, **kwargs):
-        student = StudentInfo.objects.get(user__id = self.request.POST['student_id'])
+        student = ''
+        # student = StudentInfo.objects.get(user__id = self.request.POST['student_id'])
         if self.request.POST['status']=='Confirm':
             student.status = 'Verified'
         else:
             student.status = 'Rejected'
         student.save()
-        return HttpResponseRedirect(reverse('institute_profile'))
+        return HttpResponseRedirect(reverse('institute_profile',args=(self.request.user.username,)))
 
 
 class CsvInfoUpload(TemplateView):
@@ -148,7 +118,8 @@ class CsvInfoUpload(TemplateView):
 
     def get_context_data(self, **kwargs):
         form = CsvInfoForm()
-        institute = InstitueInfo.objects.get(user = self.request.user)
+        institute ='t'
+        # institute = InstitueInfo.objects.get(user = self.request.user)
         groups = UserGroup.objects.filter(owner= institute).values('name','id')
         csv_objs = CsvInfo.objects.filter(institute = institute).values('file_upload','id','group__name')
         return locals()
@@ -197,11 +168,12 @@ def registrationFromCsv(request):
             header = each_row
             exclude_fields = ['username','email']
 
-            if obj.type=='Student':
-                model_form = modelform_factory(StudentInfo, exclude=('images','groups',))
-            elif obj.type == 'Faculty':
-                model_form = modelform_factory(FacultyInfo,exclude=('image','rating','connections','contact_number','address','qualification','work_experience'))
-
+            # if obj.type=='Student':
+            #     model_form = modelform_factory(StudentInfo, exclude=('images','groups',))
+            # elif obj.type == 'Faculty':
+            #     model_form = modelform_factory(FacultyInfo,exclude=('image','rating','connections','contact_number','address','qualification','work_experience'))
+            #
+            model_form = ''
             username = data['username']
             if User.objects.filter(username = data['username']):
                 pass
@@ -232,13 +204,13 @@ def registrationFromCsv(request):
         return HttpResponse('Error in reading the file,Please Upload Correct Csv File')
     return HttpResponse('msg sent')
 
-def students_connected_to_institute(request):
-
-    institute = InstitueInfo.objects.get(user = request.user)
-    connected_students = StudentInfo.objects.filter(institute = institute, status = 'Verified', profile = True).values\
-            ('user_id','user__first_name','user__username','images__photo','user__username')
-    # students = ImageInfo.objects.filter(user__id__in = connected_students_ids).values('photo','user__first_name','user__last_name')
-    return  render_to_response('instituteinfo/mystudents.html', locals(), context_instance = RequestContext(request))
+# def students_connected_to_institute(request):
+#
+#     institute = InstitueInfo.objects.get(user = request.user)
+#     connected_students = StudentInfo.objects.filter(institute = institute, status = 'Verified', profile = True).values\
+#             ('user_id','user__first_name','user__username','images__photo','user__username')
+#     # students = ImageInfo.objects.filter(user__id__in = connected_students_ids).values('photo','user__first_name','user__last_name')
+#     return  render_to_response('instituteinfo/mystudents.html', locals(), context_instance = RequestContext(request))
 
 
 
@@ -304,13 +276,13 @@ def registerStudent(request):
     else:
         random_number = User.objects.make_random_password(length=10, allowed_chars='123456789')#todo static/send password as a mail
         form = UserCreationForm(data = {'username':username,'password1':random_number,'password2':random_number})
-        #todo-save group.studentinfo, connect to institute
-        form.save()#todo exception handling
+
+        form.save()
         group = Group.objects.get(name = 'Student')
         user = User.objects.get(username = username)
         group.user_set.add(user)
         institute = InstitueInfo.objects.get(user = request.user)
-        #todo-->unique number and image is mandatory which is giving error
+
         data.update({'institute':institute.id,'status':'Verified','user':user.id,'profile':True})
         form = model_form(data)
         if form.is_valid():
@@ -324,3 +296,45 @@ def registerStudent(request):
         except:
             pass
     return HttpResponse('Done')
+
+from models import Comment
+import datetime
+class BulletinInfo(TemplateView):
+    template_name = 'instituteinfo/bulletin.html'
+
+    def get_context_data(self,*args,**kwargs):
+        bulletin_id = kwargs.get('bulletin_id')
+        bulletin_obj = Bulletin.objects.get(id=bulletin_id)
+        comments = Comment.objects.filter(bulletin__id=bulletin_id).values('user','reply','posted')
+        commentform = modelform_factory(Comment,fields=('reply',))
+        return locals()
+
+    def post(self,*args,**kwargs):
+
+        commentform = modelform_factory(Comment,fields=('reply',))
+        comment = commentform(data=self.request.POST)
+        comment_obj = comment.save(commit=False)
+        comment_obj.user=self.request.user
+        comment_obj.posted = datetime.datetime.now()
+        comment_obj.bulletin_id = self.request.POST.get('bulletin_id')
+        comment.save()
+        return  HttpResponseRedirect('.')
+
+
+from django.db.models import Q
+def messages(request):
+    if request.is_ajax():
+        user_id = request.POST.get('user_id')
+        user=User.objects.get(id= int(user_id))
+        user_messages = Message.objects.filter(Q(from_user= user)|Q(user=user))
+        return  render_to_response('instituteinfo/user_messages.html', locals(), context_instance = RequestContext(request))
+
+    user = request.user
+    user_id = user.id
+    user_list = Message.objects.filter(Q(from_user= user)|Q(user=user)).values('from_user__id','user__id')
+    from_user_ids = [user['from_user__id']for user in user_list]
+    user_ids = [user['user__id']for user in user_list]
+    users= User.objects.filter(id__in = from_user_ids+user_ids).exclude(id=user_id).values('first_name','last_name','id')
+    # persistent_messages.add_message(request, persistent_messages.SUCCESS,
+    #                                 'Hi Sally, here is a message to you.', subject='Success message', user=to_user,from_user=user)
+    return  render_to_response('instituteinfo/messages.html', locals(), context_instance = RequestContext(request))

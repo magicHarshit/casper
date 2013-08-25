@@ -10,7 +10,7 @@ REGISTRATION_CHOICES = (
 
 class LoginDetail( models.Model ):
 
-    user = models.ForeignKey( User, related_name = 'user_detail' )
+    # user = models.ForeignKey( User, related_name = 'user_detail' )
     name = models.CharField( max_length = 500 )
     last_login = models.DateTimeField()
     ip_address = models.CharField( max_length = 150, blank = True, null = True )

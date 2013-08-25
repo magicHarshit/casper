@@ -1,7 +1,7 @@
 __author__ = 'harshit'
 
 from django.conf.urls.defaults import patterns , url
-from group_config.views import  UserGroupConfiguration,get_group_listing,delete_group,edit_group
+from group_config.views import  UserGroupConfiguration,delete_group,edit_group
 
 urlpatterns = patterns( '',
 
@@ -11,7 +11,7 @@ urlpatterns = patterns( '',
 
 #         url( r'^group_listing/$', StaticGroupListing.as_view(), name = 'static_group_listing' ),
 
-         url( r'^group_listing/$', get_group_listing, name = 'static_group_listing' ),
+         # url( r'^group_listing/$', get_group_listing, name = 'static_group_listing' ),
 
          url( r'^delete/$', delete_group, name = 'delete_group' ),
 

@@ -46,7 +46,7 @@
 
 
  <div class ="container">
-    <form class ="form-signin" action="{% url register %}" method="post">{% csrf_token %}
+    <form class ="form-signin" action="{% url 'register' %}" method="post">{% csrf_token %}
         <h2 class="form-horizontal-heading">Please SignUp</h2>
         {% for each_field in registration_form.visible_fields %}
 
@@ -64,7 +64,7 @@
 </div>
 
 </body>
-<!--<form  method="post" action="{% url register %}"> {% csrf_token %}-->
+<!--<form  method="post" action="{% url 'register' %}"> {% csrf_token %}-->
 
     <!--{% for each_field in registration_form.visible_fields %}-->
 
