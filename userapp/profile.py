@@ -42,9 +42,3 @@ class ProfileSubmission(TemplateView):
             form = StudentForm(self.request.POST, instance=user)
             form.save()
             return HttpResponseRedirect(reverse('student_inbox', args=(self.request.user.id,)))
-
-        # client_mod = form.save(commit=False)
-        # client_mod.save()
-        # for groupe in form.cleaned_data.get('groupes'):
-        #     clientgroupe = ClientGroupe(client=client_mod, groupe=groupe)
-        #     clientgroupe.save()
