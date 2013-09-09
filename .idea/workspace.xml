@@ -2,25 +2,45 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d902a438-f439-412f-a409-a86d6563506c" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/sass_stdlib.xml" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/openshift.iml" afterPath="$PROJECT_DIR$/.idea/openshift.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/.name" afterPath="$PROJECT_DIR$/.idea/.name" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/encodings.xml" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/other.xml" afterPath="$PROJECT_DIR$/.idea/other.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/userapp/profile.py" afterPath="$PROJECT_DIR$/userapp/profile.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/scopes/scope_settings.xml" afterPath="$PROJECT_DIR$/.idea/scopes/scope_settings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/settings.py" afterPath="$PROJECT_DIR$/settings.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/testrunner.xml" afterPath="$PROJECT_DIR$/.idea/testrunner.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/userapp/views.py" afterPath="$PROJECT_DIR$/userapp/views.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/casperF/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/casperF/bulletins/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/casperF/master/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/casperF/templates/master/change_password.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/casperF/master/choices.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/casperF/master/decorators.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/casperF/bulletins/forms.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/casperF/master/forms.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/casperF/master/groups.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/casperF/master/home.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/casperF/templates/master/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/casperF/manage.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/casperF/master/middleware.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/casperF/bulletins/models.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/casperF/master/models.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/casperF/master/profile.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/casperF/templates/master/profile_submission.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/casperF/settings.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/casperF/templates/master/signup.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/casperF/urls.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/casperF/bulletins/urls.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/casperF/master/urls.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/casperF/bulletins/views.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/casperF/master/views.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="openshift.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="d902a438-f439-412f-a409-a86d6563506c" time="1378562297580" ignored="false" />
-    <file path="/a.dummy" changelist="d902a438-f439-412f-a409-a86d6563506c" time="1378564299426" ignored="false" />
+    <file path="/Dummy.txt" changelist="d902a438-f439-412f-a409-a86d6563506c" time="1378624761522" ignored="false" />
+    <file path="/a.dummy" changelist="d902a438-f439-412f-a409-a86d6563506c" time="1378754538722" ignored="false" />
+    <file path="/models.py" changelist="d902a438-f439-412f-a409-a86d6563506c" time="1378745574876" ignored="false" />
+    <file path="/forms.py" changelist="d902a438-f439-412f-a409-a86d6563506c" time="1378751043699" ignored="false" />
+    <file path="/settings.py" changelist="d902a438-f439-412f-a409-a86d6563506c" time="1378629422589" ignored="false" />
+    <file path="/views.py" changelist="d902a438-f439-412f-a409-a86d6563506c" time="1378752592809" ignored="false" />
+    <file path="/urls.py" changelist="d902a438-f439-412f-a409-a86d6563506c" time="1378754485260" ignored="false" />
+    <file path="/profile.py" changelist="d902a438-f439-412f-a409-a86d6563506c" time="1378641281243" ignored="false" />
+    <file path="/home.py" changelist="d902a438-f439-412f-a409-a86d6563506c" time="1378741682596" ignored="false" />
+    <file path="/decorators.py" changelist="d902a438-f439-412f-a409-a86d6563506c" time="1378748922378" ignored="false" />
+    <file path="/groups.py" changelist="d902a438-f439-412f-a409-a86d6563506c" time="1378755453796" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,23 +60,34 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="views.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/userapp/views.py">
+      <file leaf-file-name="models.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/casperF/master/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+            <state line="38" column="6" selection-start="1560" selection-end="1560" vertical-scroll-proportion="0.0">
               <folding>
-                <element signature="e#26#82#0" expanded="true" />
+                <element signature="e#0#28#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="models.py" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/master/models.py">
+      <file leaf-file-name="groups.py" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/casperF/master/groups.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="43" column="58" selection-start="1933" selection-end="1933" vertical-scroll-proportion="0.9492386">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
               <folding>
-                <element signature="e#0#28#0" expanded="true" />
+                <element signature="e#0#56#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="forms.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/casperF/master/forms.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="141" column="6" selection-start="6253" selection-end="6253" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="e#0#57#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -80,9 +111,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/userapp/urls.py" />
-        <option value="$PROJECT_DIR$/userapp/profile.py" />
         <option value="$PROJECT_DIR$/userapp/views.py" />
+        <option value="$PROJECT_DIR$/casperF/templates/master/index.html" />
+        <option value="$PROJECT_DIR$/casperF/templates/master/signup.html" />
+        <option value="$PROJECT_DIR$/casperF/templates/master/change_password.html" />
+        <option value="$PROJECT_DIR$/casperF/templates/master/profile_submission.html" />
+        <option value="$PROJECT_DIR$/casperF/master/profile.py" />
+        <option value="$PROJECT_DIR$/casperF/master/views.py" />
+        <option value="$PROJECT_DIR$/casperF/master/models.py" />
+        <option value="$PROJECT_DIR$/casperF/master/urls.py" />
+        <option value="$PROJECT_DIR$/casperF/master/home.py" />
+        <option value="$PROJECT_DIR$/casperF/bulletins/models.py" />
+        <option value="$PROJECT_DIR$/casperF/master/decorators.py" />
+        <option value="$PROJECT_DIR$/casperF/bulletins/forms.py" />
+        <option value="$PROJECT_DIR$/casperF/bulletins/views.py" />
+        <option value="$PROJECT_DIR$/casperF/bulletins/urls.py" />
+        <option value="$PROJECT_DIR$/casperF/master/groups.py" />
       </list>
     </option>
   </component>
@@ -118,6 +162,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -136,33 +181,25 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="openshift" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="openshift" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="master" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="recentsLimit" value="5" />
     <property name="options.lastSelected" value="project.propVCSSupport.Mappings" />
-    <property name="dynamic.classpath" value="false" />
-    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="recentsLimit" value="5" />
+    <property name="DefaultHtmlFileTemplate" value="Html5" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="dynamic.classpath" value="false" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/casperF/master" />
+      <recent name="$PROJECT_DIR$/casperF" />
+    </key>
   </component>
   <component name="RunManager" selected="Django server.openshift">
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
@@ -180,6 +217,29 @@
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="" />
       <option name="PARAMETERS" value="" />
+      <method />
+    </configuration>
+    <configuration default="true" type="Python.DjangoServer" factoryName="Django server">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="openshift" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <option name="port" value="8000" />
+      <option name="host" value="" />
+      <option name="additionalOptions" value="" />
+      <option name="browserUrl" value="" />
+      <option name="runTestServer" value="false" />
+      <option name="runNoReload" value="false" />
+      <option name="useCustomRunCommand" value="false" />
+      <option name="customRunCommand" value="" />
       <method />
     </configuration>
     <configuration default="true" type="tests" factoryName="Unittests">
@@ -205,27 +265,24 @@
       <option name="USE_PARAM" value="false" />
       <method />
     </configuration>
-    <configuration default="true" type="Python.DjangoServer" factoryName="Django server">
+    <configuration default="true" type="tests" factoryName="Doctests">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
+      <envs />
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="openshift" />
-      <option name="launchJavascriptDebuger" value="false" />
-      <option name="port" value="8000" />
-      <option name="host" value="" />
-      <option name="additionalOptions" value="" />
-      <option name="browserUrl" value="" />
-      <option name="runTestServer" value="false" />
-      <option name="runNoReload" value="false" />
-      <option name="useCustomRunCommand" value="false" />
-      <option name="customRunCommand" value="" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
       <method />
     </configuration>
     <configuration default="true" type="com.intellij.persistence.run.ConsoleRunConfigurationType" factoryName="Query Language Console">
@@ -272,25 +329,25 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="64" y="-4" width="1303" height="773" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32850242" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24940048" sideWeight="0.6714976" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25419664" sideWeight="0.6714976" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -354,100 +411,138 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/master/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="0" selection-start="221" selection-end="221" vertical-scroll-proportion="0.24725275">
-          <folding>
-            <element signature="e#0#52#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/custom_context_processor/groups.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="0" selection-start="439" selection-end="439" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/userapp/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="8" selection-start="502" selection-end="502" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/userapp/admin.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="0" selection-start="403" selection-end="403" vertical-scroll-proportion="0.4314721">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/userapp/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="136" column="0" selection-start="6104" selection-end="6104" vertical-scroll-proportion="0.9048443">
-          <folding>
-            <element signature="e#0#57#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/userapp/profile.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="44" column="0" selection-start="2069" selection-end="2069" vertical-scroll-proportion="0.9069374">
-          <folding>
-            <element signature="e#0#56#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/userapp/tests.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/userapp/translations.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/userapp/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="0" selection-start="1247" selection-end="1247" vertical-scroll-proportion="0.7866185">
+        <state line="42" column="17" selection-start="1909" selection-end="1909" vertical-scroll-proportion="0.9480969">
           <folding>
             <element signature="e#24#76#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/master/views.py">
+    <entry file="file://$PROJECT_DIR$/casperF/master/profile.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="20" selection-start="721" selection-end="721" vertical-scroll-proportion="0.02538071">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/userapp/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+        <state line="44" column="92" selection-start="1857" selection-end="1937" vertical-scroll-proportion="0.9204947">
           <folding>
-            <element signature="e#26#82#0" expanded="true" />
+            <element signature="e#0#56#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/master/models.py">
+    <entry file="file://$PROJECT_DIR$/casperF/master/home.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="43" column="58" selection-start="1933" selection-end="1933" vertical-scroll-proportion="0.9492386">
+        <state line="7" column="0" selection-start="390" selection-end="434" vertical-scroll-proportion="-3.387097">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/InstituteInfo/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="180" column="121" selection-start="7293" selection-end="7293" vertical-scroll-proportion="0.36851212">
+          <folding>
+            <element signature="e#0#56#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/casperF/master/decorators.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="14" selection-start="418" selection-end="418" vertical-scroll-proportion="0.27918783">
+          <folding>
+            <element signature="e#0#27#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/casperF/bulletins/forms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="15" selection-start="404" selection-end="404" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/casperF/bulletins/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="6" selection-start="586" selection-end="586" vertical-scroll-proportion="0.5076142">
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/registration/password_reset.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/casperF/bulletins/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="102" selection-start="728" selection-end="728" vertical-scroll-proportion="0.35532996">
+          <folding>
+            <element signature="e#0#51#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/casperF/bulletins/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="34" column="14" selection-start="1377" selection-end="1377" vertical-scroll-proportion="0.41624364">
+          <folding>
+            <element signature="e#0#47#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/casperF/master/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="31" column="0" selection-start="1452" selection-end="1452" vertical-scroll-proportion="0.80449826">
+          <folding>
+            <element signature="e#0#51#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/casperF/master/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="77" column="0" selection-start="3317" selection-end="3317" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#0#56#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/group_config/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="60" column="0" selection-start="0" selection-end="2359" vertical-scroll-proportion="0.9480969">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/casperF/master/forms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="141" column="6" selection-start="6253" selection-end="6253" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#0#57#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/casperF/master/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="38" column="6" selection-start="1560" selection-end="1560" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/casperF/master/groups.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#0#56#0" expanded="true" />
           </folding>
         </state>
       </provider>
